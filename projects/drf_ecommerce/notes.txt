@@ -1,0 +1,291 @@
+Parsers para manejo de imgs.
+# ------------------------------------------------views auth_own-------------------------------------------------------
+# 1. caso de uso -> si ya tiene un token elimina las sessions y realiza el login.
+# # gte -> mayor o igual.
+# all_sessions = Session.objects.filter(expire_date__gte=datetime.now())
+# if all_sessions.exists():
+#     for session in all_sessions:
+#         session_data = session.get_decoded()
+#         # { data del session decodificada.
+#         #     '_auth_user_id': '1',
+#         #     '_auth_user_backend': 'django.contrib.auth.backends.ModelBackend',
+#         #     '_auth_user_hash': 'abc123...',
+#         # }
+#         if user.id == int(session_data.get('_auth_user_id')):
+#             # elimina todas las sessions del user que esta iniciando session.
+#             session.delete()
+# token.delete()
+# token = Token.objects.create(user=user)
+# return Response({
+#     "token": token.key,
+#     "user": user_serializer.data,
+#     "message": "Inicio de sesión exitoso."
+# }, status=status.HTTP_200_OK)
+# 2. caso de uso -> si ya tiene una session que no pueda ingresar.
+# token.delete()
+# return Response({
+#     'error': 'Ya se ha iniciado sesión con este user.'
+# },  status=status.HTTP_409_CONFLICT)
+# ------------------------------------------------views auth_own-------------------------------------------------------
+# ------------------------------------------------views core-------------------------------------------------------
+class GeneralListAPIView(ListAPIView):
+    serializer_class = None
+    serializer_view_class = None
+    
+    def get_queryset(self, pk=None):
+        model = self.get_serializer().Meta.model
+        return model.objects.filter(is_active=True)
+    
+    def get_serializer_class(self):
+        if self.request.method == 'GET' and self.serializer_view_class is not None:
+            return self.serializer_view_class
+        return self.serializer_class
+
+class GeneralListCreateAPIView(ListCreateAPIView):
+    serializer_class = None
+    serializer_view_class = None
+    
+    def get_queryset(self, pk=None):
+        model = self.get_serializer().Meta.model
+        return model.objects.filter(is_active=True)
+    
+    def get_serializer_class(self):
+        if self.request.method == 'GET' and self.serializer_view_class is not None:
+            return self.serializer_view_class
+        return self.serializer_class
+
+class GeneralRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class = None
+    serializer_view_class = None
+    
+    def get_queryset(self, pk=None):
+        model = self.get_serializer().Meta.model
+        if pk is None:
+            return model.objects.filter(is_active=True)
+        return model.objects.filter(is_active=True, pk=pk).first()
+    
+    def get_serializer_class(self):
+        if self.request.method == 'GET' and self.serializer_view_class is not None:
+            return self.serializer_view_class
+        return self.serializer_class
+# ------------------------------------------------views core-------------------------------------------------------
+# ------------------------------------------------views users-------------------------------------------------------
+lass UsersAPIView(APIView):
+    model = Users
+    serializer = UsersSerializer
+    # list.
+    def get(self, request, *args, **kwargs):
+        # query.
+        users = self.model.objects.filter(is_active=True)
+        users_serializer = self.serializer(users, many = True)
+        return Response(users_serializer.data,status=status.HTTP_200_OK)
+    # create.
+    def post(self, request, *args, **kwargs):
+        user_serializer = self.serializer(data=request.data)
+        # validation.
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(user_serializer.data,status=status.HTTP_201_CREATED)
+        return Response(user_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+class UsersActionsByPkAPIView(APIView):
+    model = Users
+    serializer = UsersSerializer
+    # retrieve.
+    def get(self, request, pk, *args, **kwargs):
+        # validation.
+        pk, error_response = validar_pk_numerico(pk)
+        if error_response:
+            return error_response
+        # query.
+        # user = self.model.objects.filter(pk=pk).first()
+        user = get_object_or_404(self.model, is_active=True, pk=pk)
+        user_serializer = self.serializer(user)
+        return Response(user_serializer.data,status=status.HTTP_200_OK)
+    # update.
+    def put(self, request, pk, *args, **kwargs):
+        # validation.
+        pk, error_response = validar_pk_numerico(pk)
+        if error_response:
+            return error_response
+        # query.
+        user = get_object_or_404(self.model, is_active=True, pk=pk)
+        user_serializer = self.serializer(user, data=request.data)
+        # validation.
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(user_serializer.data,status=status.HTTP_200_OK)
+        return Response(user_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    # delete
+    def delete(self, request, pk, *args, **kwargs):
+        # validation.
+        pk, error_response = validar_pk_numerico(pk)
+        if error_response:
+            return error_response
+        # query.
+        user = get_object_or_404(self.model, is_active=True, pk=pk)
+        # elimination logical.
+        user.is_active = False
+        user.save()
+        user_serializer = self.serializer(user)
+        return Response(user_serializer.data,status.HTTP_200_OK)
+        # elimination direct.
+        # user.delete()
+        # return Response({'message':'Successfully User elimination.'},status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET','POST']) # methods allowed.
+def users_api_view(request, *args, **kwargs):
+    model = Users
+    serializer = UsersSerializer
+    # list.
+    if request.method == 'GET':
+        # query.
+        users = model.objects.filter(is_active=True)
+        users_serializer = serializer(users, many = True)
+        return Response(users_serializer.data,status=status.HTTP_200_OK)
+    # create.
+    elif request.method == 'POST':
+        user_serializer = serializer(data=request.data)
+        # validation.
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(user_serializer.data,status=status.HTTP_201_CREATED)
+        return Response(user_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','DELETE']) # methods allowed.
+def users_actions_by_pk_api_view(request, pk, *args, **kwargs):
+    model = Users
+    serializer = UsersSerializer
+    # validation.
+    pk, error_response = validar_pk_numerico(pk)
+    if error_response:
+        return error_response
+    # query.
+    # user = model.objects.filter(pk=pk).first()
+    user = get_object_or_404(model, is_active=True, pk=pk)
+    # validation.
+    if user:
+        # retrieve.
+        if request.method == 'GET':
+            user_serializer = serializer(user)
+            return Response(user_serializer.data,status.HTTP_200_OK)
+        # update
+        if request.method == 'PUT':
+            user_serializer = serializer(user, data=request.data)
+            # validation.
+            if user_serializer.is_valid():
+                user_serializer.save()
+                return Response(user_serializer.data,status.HTTP_200_OK)
+            return Response(user_serializer.errors,status.HTTP_400_BAD_REQUEST)
+        # delete
+        if request.method == 'DELETE':
+            # elimination logical.
+            user.is_active = False
+            user.save()
+            user_serializer = serializer(user)
+            return Response(user_serializer.data,status.HTTP_200_OK)
+            # elimination direct.
+            # user.delete()
+            # return Response({'message':'Successfully User elimination.'},status=status.HTTP_204_NO_CONTENT)
+# ------------------------------------------------views users-------------------------------------------------------
+# ------------------------------------------------views categories product-------------------------------------------------------
+class CategoriesProductListCreateAPIView(GeneralListCreateAPIView):
+    serializer_class = CategoriesProductSerializer
+
+class CategoriesProductRetrieveUpdateDestroyAPIView(GeneralRetrieveUpdateDestroyAPIView):
+    serializer_class = CategoriesProductSerializer
+    
+    # elimination logical. -> para elimination direct se comenta el method delete().
+    def delete(self, request, pk, *args, **kwargs):
+        category_product = self.get_queryset(pk)
+        if category_product:
+            category_product.is_active = False
+            category_product.save()
+            return Response({'message':'Successfully Category Product elimination.'},status=status.HTTP_200_OK)
+        return Response({'messge':'Errorful Category Product elimination.'},status=status.HTTP_400_BAD_REQUEST)
+# ------------------------------------------------views categories product-------------------------------------------------------
+# ------------------------------------------------views-------------------------------------------------------
+# class ProductsRetrieveAPIView(RetrieveAPIView):
+#     serializer_class = ProductsViewSerializer
+    
+#     def get_queryset(self):
+#         return self.get_serializer().Meta.model.objects.filter(is_active=True)
+
+# elimination direct -> sin el method delete.
+# class ProductsDestroyAPIView(DestroyAPIView):
+#     serializer_class = ProductsActionsSerializer
+    
+#     def get_queryset(self):
+#         return self.get_serializer().Meta.model.objects.filter(is_active=True)
+
+#     # elimination logical.
+#     def delete(self, request, pk, *args, **kwargs):
+#         product = self.get_queryset().filter(pk=pk).first()
+#         if product:
+#             product.is_active = False
+#             product.save()
+#             return Response({'message':'Successfully Product elimination.'},status=status.HTTP_200_OK)
+#         return Response({'messge':'Errorful Product elimination.'},status=status.HTTP_400_BAD_REQUEST)
+
+# class ProductsUpdateAPIView(UpdateAPIView):
+#     serializer_class = ProductsActionsSerializer
+    
+#     def get_queryset(self, pk):
+#         return self.get_serializer().Meta.model.objects.filter(is_active=True).filter(pk=pk).first()
+    
+#     def patch(self, request, pk=None, *args, **kwargs):
+#         if self.get_queryset(pk):
+#             product_serializer = self.serializer_class(self.get_queryset(pk))
+#             return Response(product_serializer.data,status=status.HTTP_200_OK)
+#         return Response({'messge':'Product no exist.'},status=status.HTTP_400_BAD_REQUEST)
+    
+#     def put(self, request, pk=None, *args, **kwargs):
+#         if self.get_queryset(pk):
+#             product_serializer = self.serializer_class(self.get_queryset(pk), data=request.data)
+#             if product_serializer.is_valid():
+#                 product_serializer.save()
+#                 return Response(product_serializer.data,status=status.HTTP_200_OK)
+#             return Response(product_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+#         return Response({'messge':'Product no exist.'},status=status.HTTP_400_BAD_REQUEST)
+
+# class ProductsListAPIView(GeneralListAPIView):
+#     serializer_class = ProductsViewSerializer
+
+# class ProductsCreateAPIView(CreateAPIView):
+#     serializer_class = ProductsActionsSerializer
+
+#     def post(self, request, *args, **kwargs):
+#         product_serializer = self.serializer_class(data=request.data)
+#         # validation.
+#         if product_serializer.is_valid():
+#             product_serializer.save()
+#             return Response({'message':'Successfully Product register.'},status=status.HTTP_201_CREATED)
+#         return Response(product_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+# ------------------------------------------------views-------------------------------------------------------
+# ------------------------------------------------serializers-------------------------------------------------------
+# method 1 -> FK -> me trae toda la data definida en el serializer del model en questión.
+# measure_unit = MeasureUnitsSerializer()
+# category = CategoriesProductSerializer()
+
+# method 2 -> FK -> se toma lo que se alla definido en el method __str__.
+# measure_unit = serializers.StringRelatedField()
+# category = serializers.StringRelatedField()
+
+# method 3 -> FK -> en el method to_representation(), para definir como quiero
+# que me muestre cada product.
+# def to_representation(self, instance):
+#     return {
+#         'id': instance.id,
+#         'name': instance.name,
+#         'description': instance.description,
+#         'measure_unit': {
+#             'id': instance.measure_unit.id,
+#             'description': instance.measure_unit.description
+#         },
+#         'category': {
+#             'id': instance.category.id,
+#             'description': instance.category.description
+#         },
+#         'image': instance.image if instance.image != '' else ''
+#     }
+# ------------------------------------------------serializers-------------------------------------------------------

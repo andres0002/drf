@@ -1,0 +1,56 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+API -> Una API (del inglés Application Programming Interface, o Interfaz de Programación de Aplicaciones) es un conjunto de reglas y
+definiciones que permite que diferentes aplicaciones se comuniquen entre sí. En términos sencillos, una API actúa como un puente
+que permite que un software interactúe con otro.
+¿Qué hace una API?
+- Permite que una aplicación solicite datos o servicios de otra.
+- Define cómo deben hacerse estas solicitudes (formatos, protocolos, endpoints, etc.).
+- Establece qué se puede hacer (acceso, funciones permitidas, seguridad).
+Ejemplo simple:
+- Imagina que estás usando una aplicación de clima en tu celular. Esa app no calcula el clima por sí sola: hace
+  una solicitud a una API meteorológica, que le envía los datos del clima actual en tu ubicación. La app simplemente muestra esos datos de forma amigable.
+Tipos comunes de APIs:
+- REST: Usa HTTP y es muy común en aplicaciones web.
+- SOAP: Más estructurada, usada en entornos empresariales.
+- GraphQL: Una alternativa moderna a REST, más flexible.
+- APIs de terceros: Como la API de Google Maps, la API de Twitter, etc.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+REST -> REST (Representational State Transfer) es un estilo de arquitectura para diseñar servicios web. Es una de las formas más comunes de
+construir APIs web hoy en día, gracias a su simplicidad y eficiencia.
+¿Qué significa REST?
+REST no es un lenguaje o un protocolo, sino un conjunto de principios y restricciones para crear servicios que usen HTTP para comunicarse.
+Principios clave de REST
+- Cliente-servidor: El cliente (como una app o navegador) y el servidor (que tiene los datos o funcionalidades) están separados y se comunican mediante peticiones.
+- Sin estado (stateless): Cada petición del cliente al servidor debe contener toda la información necesaria. El servidor no guarda el estado entre peticiones.
+- Caché: Las respuestas pueden ser almacenadas temporalmente (cacheadas) para mejorar el rendimiento.
+- Interfaz uniforme: Todas las interacciones usan un conjunto estándar de operaciones HTTP:
+    * GET: obtener datos.
+    * POST: crear datos.
+    * PUT: actualizar datos.
+    * DELETE: eliminar datos.
+- Acceso a recursos mediante URLs: Todo se trata como un "recurso" accesible a través de una URL. Ejemplo:
+    * GET https://api.ejemplo.com/usuarios/123
+- Representaciones: Los recursos pueden representarse en diferentes formatos, como JSON o XML (aunque hoy en día, JSON es el más común).
+Ejemplo de uso de una API REST
+Supón que tienes una API para gestionar tareas (tareas):
+- GET /tareas → Lista todas las tareas.
+- GET /tareas/1 → Obtiene la tarea con ID 1.
+- POST /tareas → Crea una nueva tarea.
+- PUT /tareas/1 → Actualiza la tarea con ID 1.
+- DELETE /tareas/1 → Elimina la tarea con ID 1.
+Ventajas de REST
+- Fácil de usar con HTTP.
+- Ligero (especialmente usando JSON).
+- Compatible con muchos lenguajes y plataformas.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+API REST o RESTful API -> Cuando se combinan API y REST, se suele hablar de una: -> 👉 API REST o RESTful API Ambos términos son correctos y muy comunes.
+¿Qué es una RESTful API?
+Una RESTful API es una API (interfaz de programación de aplicaciones) que sigue los principios de arquitectura REST
+para permitir que diferentes aplicaciones se comuniquen entre sí a través de la web usando HTTP.
+Términos relacionados:
+Término -> Significado
+API REST -> Una API que sigue las reglas de REST.
+RESTful API -> Lo mismo, pero enfatizando que es "plenamente" conforme a REST.
+Servicio REST -> Otra forma de referirse a una API que implementa REST.
+En resumen: "API REST" = "RESTful API", aunque "RESTful" es más técnico.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------

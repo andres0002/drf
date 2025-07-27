@@ -1,0 +1,5475 @@
+{
+	"info": {
+		"_postman_id": "81f5b0fe-e6cc-4e0e-8bb1-d2eee0d38ee7",
+		"name": "drf_ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15830532",
+		"_collection_link": "https://crimson-robot-615195.postman.co/workspace/drf_ecommerce~9cffe33e-fe0a-41c8-89a4-71e98f8865df/collection/15830532-81f5b0fe-e6cc-4e0e-8bb1-d2eee0d38ee7?action=share&source=collection_link&creator=15830532"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "MeasureUnits",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_measure_units/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_measure_units",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/public_measure_units/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"public_measure_units",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "CategoriesProduct",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_categories_product/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_categories_product",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/public_categories_product/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"public_categories_product",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Indicators",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_indicators/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_indicators",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/public_indicators/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"public_indicators",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_products/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_products/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_products/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_products/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_products/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/private_products/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_products/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/product/private_products/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"private_products",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/product/public_products/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"product",
+												"public_products",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_users/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_users/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Change Password",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"password\": \"12345\",\r\n    \"password2\": \"12345\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_users/1/change_password/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												"1",
+												"change_password",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_users/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_users/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_users/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_users/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_users/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_users/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_users",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/public_users/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"public_users",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Reset Password Request",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"admin_tests@yopmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/public_users/reset_password_request/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"public_users",
+												"reset_password_request",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Reset Password Confirm",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"uid\": \"MQ\",\r\n    \"token\": \"cr38xz-0fedc036fe742ae4bc3d714425db674d\",\r\n    \"password\": \"12345\",\r\n    \"password2\": \"12345\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/public_users/reset_password_confirm/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"public_users",
+												"reset_password_confirm",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Groups",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_groups/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_groups",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/public_groups/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"public_groups",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Permissions",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/user/private_user_permissions/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"private_user_permissions",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/user/public_user_permissions/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"user",
+												"public_user_permissions",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth_Own",
+			"item": [
+				{
+					"name": "Private",
+					"item": [
+						{
+							"name": "Logout Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code === 200) {\r",
+											"    pm.environment.set(\"token\", \"\");\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{hostname}}/auth/logout/",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"auth",
+										"logout",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code == 200) {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.environment.set(\"token\", jsonData.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{hostname}}/auth/refresh_token/",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"auth",
+										"refresh_token",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout JWT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code == 200) {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.environment.set(\"token_jwt_refresh\", '');\r",
+											"    pm.environment.set(\"token_jwt\", '');\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_jwt}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refresh\": \"{{token_jwt_refresh}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostname}}/auth/refresh_token/",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"auth",
+										"refresh_token",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh JWT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code == 200) {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.environment.set(\"token_jwt_refresh\", jsonData.refresh);\r",
+											"    pm.environment.set(\"token_jwt\", jsonData.access);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refresh\": \"{{token_jwt_refresh}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostname}}/auth/refresh_token/",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"auth",
+										"refresh_token",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Public",
+					"item": [
+						{
+							"name": "Login Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code == 200) {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.environment.set(\"token\", jsonData.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostname}}/auth/login/",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login JWT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code == 200) {\r",
+											"    let jsonData = pm.response.json();\r",
+											"    pm.environment.set(\"token_jwt_refresh\", jsonData.refresh_token);\r",
+											"    pm.environment.set(\"token_jwt\", jsonData.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostname}}/auth/login/",
+									"host": [
+										"{{hostname}}"
+									],
+									"path": [
+										"auth",
+										"login",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Expense",
+			"item": [
+				{
+					"name": "Vouchers",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Factura\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_vouchers/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_vouchers",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/public_vouchers/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"public_vouchers",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Suppliers",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"ruc\": \"01234567896\",\r\n  \"business_name\": \"supplier 6\",\r\n  \"address\": \"address 6\",\r\n  \"phone\": \"0123456789-0006\",\r\n  \"email\": \"supplier6@yopmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Search Supplier By Ruc",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/search_supplier_by_ruc/?ruc=01234567891",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												"search_supplier_by_ruc",
+												""
+											],
+											"query": [
+												{
+													"key": "ruc",
+													"value": "01234567891"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_suppliers/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_suppliers",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/public_suppliers/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"public_suppliers",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "PaymentTypes",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Tarjeta de Crédito\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_payment_types/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_payment_types",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/public_payment_types/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"public_payment_types",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Mermas",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_mermas/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_mermas",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/public_mermas/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"public_mermas",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Expenses",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"date\": \"2025-06-07\",\r\n  \"quantity\": \"10.0\",\r\n  \"unit_price\": \"2.0\",\r\n  \"voucher_number\": \"FAC-0000000001\",\r\n  \"total\": \"20.0\",\r\n  \"voucher\": 1,\r\n  \"user\": 1,\r\n  \"supplier\": 1,\r\n  \"payment_type\": 1,\r\n  \"product\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_expenses/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_expenses",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/public_expenses/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"public_expenses",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "CategoriesExpense",
+					"item": [
+						{
+							"name": "Private",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@yopmail.com\",\r\n    \"password\": \"12345\",\r\n    \"name\": \"test2\",\r\n    \"lastname\": \"lastname\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Detail",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Patch",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Put",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"test2\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/{id}/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												"{id}",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Direct",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/bulk_delete_direct/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												"bulk_delete_direct",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bulk Delete Logical",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ids\": []\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{hostname}}/expense/private_categories_expense/bulk_delete_logical/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"private_categories_expense",
+												"bulk_delete_logical",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Public",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token_jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{hostname}}/expense/public_categories_expense/",
+											"host": [
+												"{{hostname}}"
+											],
+											"path": [
+												"expense",
+												"public_categories_expense",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
