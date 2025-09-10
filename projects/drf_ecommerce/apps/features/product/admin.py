@@ -3,8 +3,8 @@
 from django.contrib import admin
 # drf
 # third
-from import_export import resources
-from import_export.admin import ImportExportModelAdmin
+from import_export import resources # type: ignore
+from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
 from apps.features.product.models import MeasureUnits, CategoriesProduct, Indicators, Products
 
@@ -42,9 +42,9 @@ class IndicatorsResource(resources.ModelResource):
         model = Indicators
 
 class IndicatorsAdmin(ImportExportModelAdmin):
-    search_fields = ('descount_value',)
-    list_display = ('descount_value','category','created_at','updated_at','deleted_at')
-    list_filter = ('descount_value','category','created_at','updated_at','deleted_at')
+    search_fields = ('discount_value',)
+    list_display = ('discount_value','category','created_at','updated_at','deleted_at')
+    list_filter = ('discount_value','category','created_at','updated_at','deleted_at')
     readonly_fields = ('created_at','updated_at','deleted_at')
     ordering = ('created_at',)
     resource_classes = (IndicatorsResource,)
@@ -56,7 +56,7 @@ class ProductsResource(resources.ModelResource):
 
 class ProductsAdmin(ImportExportModelAdmin):
     search_fields = ('name','description')
-    list_display = ('name','description','measure_unit','category','created_at','updated_at','deleted_at')
+    list_display = ('name','description','measure_unit','category', 'discount_value','created_at','updated_at','deleted_at')
     list_filter = ('measure_unit','category','created_at','updated_at','deleted_at')
     readonly_fields = ('created_at','updated_at','deleted_at')
     ordering = ('created_at',)

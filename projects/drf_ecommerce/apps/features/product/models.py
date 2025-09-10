@@ -44,7 +44,7 @@ class Indicators(BaseModels):
     """Model definition for Indicators."""
 
     # TODO: Define fields here
-    descount_value = models.PositiveSmallIntegerField(default=0)
+    discount_value = models.PositiveSmallIntegerField(default=0)
     category = models.ForeignKey(CategoriesProduct, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
 
     class Meta:
@@ -55,7 +55,7 @@ class Indicators(BaseModels):
 
     def __str__(self):
         """Unicode representation of Indicators."""
-        return f'Offer category: {self.category_product}, descount value: {self.descount_value}.'
+        return f'Offer category: {self.category_product}, discount value: {self.discount_value}.'
 
 class Products(BaseModels):
     """Model definition for Products."""
@@ -66,6 +66,7 @@ class Products(BaseModels):
     measure_unit = models.ForeignKey(MeasureUnits, on_delete=models.CASCADE, verbose_name='Measure Unit', null=True)
     category = models.ForeignKey(CategoriesProduct, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
     image = models.ImageField('Product Image', upload_to='products/', blank=True, null=True)
+    discount_value = models.PositiveSmallIntegerField(default=0)
 
     class Meta:
         """Meta definition for Products."""

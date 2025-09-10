@@ -22,7 +22,7 @@ class IndicatorsActionsSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         return {
             'id': instance.id,
-            'descount_value': instance.descount_value,
+            'discount_value': instance.discount_value,
             'category': {
                 'id': instance.category.id,
                 'description': instance.description

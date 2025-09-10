@@ -3,7 +3,7 @@ from datetime import datetime
 # django
 from django.core.management.base import BaseCommand
 # drf
-from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken
+from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, BlacklistedToken # type: ignore
 
 class Command(BaseCommand):
     help = 'Elimina tokens JWT expirados (Outstanding y Blacklisted) para liberar recursos'

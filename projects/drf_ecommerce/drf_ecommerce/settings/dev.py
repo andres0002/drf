@@ -2,7 +2,7 @@
 # django
 from drf_ecommerce.settings.base import *
 # third
-from decouple import config
+from decouple import config # type: ignore
 # own
 
 # SECURITY WARNING: keep the secret key used in production secret!

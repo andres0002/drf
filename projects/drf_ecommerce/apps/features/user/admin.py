@@ -4,8 +4,8 @@ from django.contrib import admin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 # third
-from import_export import resources
-from import_export.admin import ImportExportModelAdmin
+from import_export import resources # type: ignore
+from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
 from apps.features.user.models import Users
 

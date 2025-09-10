@@ -3,7 +3,7 @@
 from django.db import models
 # drf
 # third
-from simple_history.models import HistoricalRecords
+from simple_history.models import HistoricalRecords # type: ignore
 # own
 
 # Create your models here.
