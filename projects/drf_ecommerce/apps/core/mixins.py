@@ -1,11 +1,11 @@
 # py
 # django
-from django.contrib.auth import get_permission_codename
+from django.contrib.auth import get_permission_codename # type: ignore
 # drf
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.decorators import action
-from rest_framework.exceptions import PermissionDenied
+from rest_framework import status # type: ignore
+from rest_framework.response import Response # type: ignore
+from rest_framework.decorators import action # type: ignore
+from rest_framework.exceptions import PermissionDenied # type: ignore
 # third
 from drf_yasg.utils import swagger_auto_schema # type: ignore
 # own

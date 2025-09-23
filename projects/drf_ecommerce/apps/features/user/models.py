@@ -1,21 +1,24 @@
 # py
 # django
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.db import models # type: ignore
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin # type: ignore
 # third
 # own
-from apps.core.models import BaseModels
+from apps.core.models import BaseModels, DocumentTypes
 
 # Create your models here.
 
 class UsersManager(BaseUserManager):
-    def _create_user(self, username, email, name, lastname, phone, password, is_staff, is_superuser, **extra_fields):
+    def _create_user(self, username, email, name, lastname, document_type, document, phone, rol, password, is_staff, is_superuser, **extra_fields):
         user = self.model(
             username = username,
             email = email,
             name = name,
             lastname = lastname,
+            document_type = document_type,
+            document = document,
             phone = phone,
+            rol = rol,
             is_staff = is_staff,
             is_superuser = is_superuser,
             **extra_fields
@@ -25,14 +28,34 @@ class UsersManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, username, email, name, lastname, phone, password=None, is_staff=False, is_superuser=False, **extra_fields):
-        return self._create_user(username, email, name, lastname, phone, password, is_staff, is_superuser, **extra_fields)
+    def create_user(self, username, email, name, lastname, document_type, document, phone, rol, password=None, is_staff=False, is_superuser=False, **extra_fields):
+        return self._create_user(username, email, name, lastname, document_type, document, phone, rol, password, is_staff, is_superuser, **extra_fields)
 
-    def create_superuser(self, username, email, name, lastname, phone, password=None, is_staff=True, is_superuser=True, **extra_fields):
-        return self._create_user(username, email, name, lastname, phone, password, is_staff, is_superuser, **extra_fields)
+    def create_superuser(self, username, email, name, lastname, document_type=None, document=None, phone=None, rol=None, password=None, is_staff=True, is_superuser=True, **extra_fields):
+        return self._create_user(username, email, name, lastname, document_type, document, phone, rol, password, is_staff, is_superuser, **extra_fields)
 
     def get_by_natural_key(self, username):
         return self.get(username=username)
+
+class Roles(BaseModels):
+    """Model definition for Roles."""
+
+    # TODO: Define fields here
+    code = models.CharField(max_length=50, unique=True)  # Ej: ADMIN, SELLER, SUPERVISOR
+    name = models.CharField(max_length=100)              # Nombre legible: "Administrador"
+    description = models.TextField(null=True, blank=True)
+
+    class Meta:
+        """Meta definition for Roles."""
+
+        verbose_name = 'Role'
+        verbose_name_plural = 'Roles'
+        ordering = ['id']
+
+    def __str__(self):
+        """Unicode representation of Roles."""
+        return self.code
+
 
 class Users(AbstractBaseUser, PermissionsMixin, BaseModels):
     """Model definition for Users."""
@@ -42,9 +65,12 @@ class Users(AbstractBaseUser, PermissionsMixin, BaseModels):
     email = models.EmailField(unique=True, max_length=255)
     name = models.CharField(max_length=255, blank=True, null=True)
     lastname = models.CharField(max_length=255, blank=True, null=True)
+    document_type = models.ForeignKey(DocumentTypes, on_delete=models.PROTECT, null=True, blank=True)
+    document = models.CharField('Document Number', max_length=20, unique=True, null=True, blank=True)
     image = models.ImageField(upload_to='user/profile/image/', blank=True, null=True)
     is_staff = models.BooleanField(default=False)
     phone = models.CharField('Phone Number', max_length=15, null=True, blank=True)
+    rol = models.ForeignKey(Roles, on_delete=models.PROTECT, null=True, blank=True)
     objects = UsersManager()
 
     USERNAME_FIELD = 'username'

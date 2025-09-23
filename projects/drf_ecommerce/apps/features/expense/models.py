@@ -1,10 +1,10 @@
 # py
 # django
-from django.db import models
+from django.db import models # type: ignore
 # drf
 # third
 # own
-from apps.core.models import BaseModels
+from apps.core.models import BaseModels, PaymentTypes
 from apps.features.product.models import Products
 
 # Create your models here.
@@ -39,23 +39,6 @@ class Suppliers(BaseModels):
             'phone': self.phone,
             'email': self.email
         }
-
-class PaymentTypes(BaseModels):
-    """Model definition for PaymentTypes."""
-
-    # TODO: Define fields here
-    name = models.CharField('Payment Type Name', max_length=100)
-
-    class Meta:
-        """Meta definition for PaymentTypes."""
-
-        verbose_name = 'Payment Type'
-        verbose_name_plural = 'Payment Types'
-        ordering = ['id']
-
-    def __str__(self):
-        """Unicode representation of PaymentTypes."""
-        return self.name
 
 class Vouchers(BaseModels):
     """Model definition for Vouchers."""

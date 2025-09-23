@@ -1,11 +1,11 @@
 # py
 # django
 # drf
-from rest_framework import status
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework import status # type: ignore
+from rest_framework.viewsets import ModelViewSet # type: ignore
+from rest_framework.decorators import action # type: ignore
+from rest_framework.response import Response # type: ignore
+from rest_framework.permissions import AllowAny, IsAuthenticated # type: ignore
 # third
 from drf_yasg.utils import swagger_auto_schema # type: ignore
 from drf_yasg.inspectors import SwaggerAutoSchema # type: ignore

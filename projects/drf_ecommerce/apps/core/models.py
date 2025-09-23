@@ -1,6 +1,6 @@
 # py
 # django
-from django.db import models
+from django.db import models # type: ignore
 # drf
 # third
 from simple_history.models import HistoricalRecords # type: ignore
@@ -32,3 +32,36 @@ class BaseModels(models.Model):
         abstract = True
         verbose_name = 'BaseModel'
         verbose_name_plural = 'BaseModels'
+
+class DocumentTypes(BaseModels):
+    """Model definition for DocumentTypes (DNI, RUC, Passport, etc.)"""
+    code = models.CharField(max_length=20, unique=True)   # Ej: CC, NIT, PASSPORT
+    name = models.CharField(max_length=100)              # Ej: "Cédula de Ciudadanía"
+    description = models.TextField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Document Type"
+        verbose_name_plural = "Document Types"
+        ordering = ["id"]
+
+    def __str__(self):
+        return f"{self.code} - {self.description}"
+
+class PaymentTypes(BaseModels):
+    """Model definition for PaymentTypes."""
+
+    # TODO: Define fields here
+    code = models.CharField(max_length=50, unique=True)   # Ej: CASH, CARD, TRANSFER
+    name = models.CharField(max_length=100)              # Ej: "Efectivo", "Tarjeta", "Transferencia"
+    description = models.TextField(null=True, blank=True)
+
+    class Meta:
+        """Meta definition for PaymentTypes."""
+
+        verbose_name = 'Payment Type'
+        verbose_name_plural = 'Payment Types'
+        ordering = ['id']
+
+    def __str__(self):
+        """Unicode representation of PaymentTypes."""
+        return self.name

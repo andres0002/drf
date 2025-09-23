@@ -1,11 +1,11 @@
 # py
 # django
 # drf
-from rest_framework.viewsets import GenericViewSet
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.viewsets import GenericViewSet # type: ignore
+from rest_framework.permissions import AllowAny, IsAuthenticated # type: ignore
 # third
-from drf_yasg.inspectors import SwaggerAutoSchema
-from rest_framework_simplejwt.authentication import JWTAuthentication
+from drf_yasg.inspectors import SwaggerAutoSchema # type: ignore
+from rest_framework_simplejwt.authentication import JWTAuthentication # type: ignore
 # own
 # from apps.features.auth_own.authentication import CustomAuthentication
 from apps.core.mixins import (
