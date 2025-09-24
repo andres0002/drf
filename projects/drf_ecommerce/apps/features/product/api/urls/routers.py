@@ -2,7 +2,7 @@
 # django
 # from django.urls import path
 # drf
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter # type: ignore
 # third
 # own
 from apps.features.product.api.viewsets.viewsets import (

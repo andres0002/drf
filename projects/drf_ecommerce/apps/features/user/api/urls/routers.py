@@ -1,7 +1,7 @@
 # py
 # django
 # drf
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter # type: ignore
 # third
 # own
 from apps.features.user.api.viewsets.viewsets import (
@@ -9,6 +9,8 @@ from apps.features.user.api.viewsets.viewsets import (
     PrivateGroupsModelViewSets,
     PublicUserPermissionsViewSets,
     PrivateUserPermissionsModelViewSets,
+    PublicRolesViewSets,
+    PrivateRolesModelViewSets,
     PublicUsersViewSets,
     PrivateUsersModelViewSets
 )
@@ -21,6 +23,9 @@ router.register(r'private_groups', PrivateGroupsModelViewSets, basename='private
 # permissions.
 router.register(r'public_user_permissions', PublicUserPermissionsViewSets, basename='public_user_permissions')
 router.register(r'private_user_permissions', PrivateUserPermissionsModelViewSets, basename='private_user_permissions')
+# roles.
+router.register(r'public_roles', PublicRolesViewSets, basename='public_roles')
+router.register(r'private_roles', PrivateRolesModelViewSets, basename='private_roles')
 # users.
 router.register(r'public_users', PublicUsersViewSets, basename='public_users')
 router.register(r'private_users', PrivateUsersModelViewSets, basename='private_users')

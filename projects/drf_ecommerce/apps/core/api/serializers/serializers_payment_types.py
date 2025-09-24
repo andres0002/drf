@@ -1,10 +1,10 @@
 # py
 # django
 # drf
-from rest_framework import serializers
+from rest_framework import serializers # type: ignore
 # third
 # own
-from apps.features.expense.models import PaymentTypes
+from apps.core.models import PaymentTypes
 
 class PaymentTypesViewSerializer(serializers.ModelSerializer):
     class Meta:

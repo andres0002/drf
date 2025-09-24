@@ -70,7 +70,7 @@ class SaleDetails(BaseModels):
         related_name="details"
     )
     product = models.ForeignKey(
-        'inventory.Product',
+        'product.Products',
         on_delete=models.CASCADE
     )
     quantity = models.PositiveIntegerField(default=1)

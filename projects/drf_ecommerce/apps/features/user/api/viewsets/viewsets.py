@@ -11,6 +11,10 @@ from apps.features.user.api.viewsets.viewsets_permissions import (
     PublicUserPermissionsViewSets,
     PrivateUserPermissionsModelViewSets
 )
+from apps.features.user.api.viewsets.viewsets_roles import (
+    PublicRolesViewSets,
+    PrivateRolesModelViewSets
+)
 from apps.features.user.api.viewsets.viewsets_users import (
     PublicUsersViewSets,
     PrivateUsersModelViewSets

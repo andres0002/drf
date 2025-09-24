@@ -7,10 +7,6 @@ from apps.features.expense.api.viewsets.viewsets_suppliers import (
     PublicSuppliersViewSets,
     PrivateSuppliersModelViewSets
 )
-from apps.features.expense.api.viewsets.viewsets_payment_types import (
-    PublicPaymentTypesViewSets,
-    PrivatePaymentTypesModelViewSets
-)
 from apps.features.expense.api.viewsets.viewsets_vouchers import (
     PublicVouchersViewSets,
     PrivateVouchersModelViewSets

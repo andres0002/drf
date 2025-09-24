@@ -7,10 +7,6 @@ from apps.features.expense.api.serializers.serializers_suppliers import (
     SuppliersViewSerializer,
     SuppliersActionsSerializer
 )
-from apps.features.expense.api.serializers.serializers_payment_types import (
-    PaymentTypesViewSerializer,
-    PaymentTypesActionsSerializer
-)
 from apps.features.expense.api.serializers.serializers_vouchers import (
     VouchersViewSerializer,
     VouchersActionsSerializer

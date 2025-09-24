@@ -1,15 +1,15 @@
 # py
 # django
 # drf
-from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.response import Response # type: ignore
+from rest_framework import status # type: ignore
 # thrid
 # own
 from apps.core.api.viewsets.viewsets import (
     PublicGeneralViewSets,
     PrivateGeneralModelViewSets
 )
-from apps.features.expense.api.serializers.serializers import (
+from apps.core.api.serializers.serializers import (
     PaymentTypesViewSerializer,
     PaymentTypesActionsSerializer
 )

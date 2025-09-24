@@ -1,6 +1,6 @@
 # py
 # django
-from django.db import models
+from django.db import models # type: ignore
 # drf
 # third
 # own
@@ -83,7 +83,7 @@ class Products(BaseModels):
     def stock(self):
         # py
         # django
-        from django.db.models import Sum
+        from django.db.models import Sum # type: ignore
         # drf
         # third
         # own

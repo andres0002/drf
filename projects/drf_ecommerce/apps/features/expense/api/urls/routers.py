@@ -2,14 +2,12 @@
 # django
 # from django.urls import path
 # drf
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter # type: ignore
 # third
 # own
 from apps.features.expense.api.viewsets.viewsets import (
     PublicSuppliersViewSets,
     PrivateSuppliersModelViewSets,
-    PublicPaymentTypesViewSets,
-    PrivatePaymentTypesModelViewSets,
     PublicVouchersViewSets,
     PrivateVouchersModelViewSets,
     PublicCategoriesExpenseViewSets,
@@ -25,9 +23,6 @@ router = DefaultRouter()
 # suppliers.
 router.register(r'public_suppliers', PublicSuppliersViewSets, basename='public_suppliers')
 router.register(r'private_suppliers', PrivateSuppliersModelViewSets, basename='private_suppliers')
-# payment types.
-router.register(r'public_payment_types', PublicPaymentTypesViewSets, basename='public_payment_types')
-router.register(r'private_payment_types', PrivatePaymentTypesModelViewSets, basename='private_payment_types')
 # vouchers.
 router.register(r'public_vouchers', PublicVouchersViewSets, basename='public_vouchers')
 router.register(r'private_vouchers', PrivateVouchersModelViewSets, basename='private_vouchers')

@@ -11,6 +11,10 @@ from apps.features.user.api.serializers.serializers_permissions import (
     UserPermissionsViewSerializer,
     UserPermissionsActionsSerializer
 )
+from apps.features.user.api.serializers.serializers_roles import (
+    RolesViewSerializer,
+    RolesActionsSerializer
+)
 from apps.features.user.api.serializers.serializers_users import (
     UsersViewSerializer,
     UsersActionsSerializer,

@@ -16,17 +16,17 @@ Including another URLconf
 """
 # py
 # django
-from django.contrib import admin
-from django.urls import path, include
-from django.contrib.auth.decorators import login_required
-from django.conf import settings
-from django.conf.urls.static import static
+from django.contrib import admin # type: ignore
+from django.urls import path, include # type: ignore
+from django.contrib.auth.decorators import login_required # type: ignore
+from django.conf import settings # type: ignore
+from django.conf.urls.static import static # type: ignore
 # drf
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated # type: ignore
+from rest_framework.authentication import SessionAuthentication # type: ignore
 # third
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
+from drf_yasg.views import get_schema_view # type: ignore
+from drf_yasg import openapi # type: ignore
 # own
 
 schema_view = get_schema_view(
@@ -48,10 +48,12 @@ urlpatterns = [
     # urls django
     path('admin/', admin.site.urls),
     # urls project drf_ecommerce.
+    path('core/', include(('apps.core.api.urls.routers','core'))),
     path('auth/', include(('apps.features.auth_own.api.urls.urls','auth'))),
     path('user/', include(('apps.features.user.api.urls.routers','user'))),
     path('product/', include(('apps.features.product.api.urls.routers','product'))),
     path('expense/', include(('apps.features.expense.api.urls.routers','expense'))),
+    path('sale/', include(('apps.features.sale.api.urls.routers','sale'))),
 ]
 
 # development

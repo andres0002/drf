@@ -15,3 +15,11 @@ from apps.core.api.viewsets.viewsets_model_viewset import (
     PublicGeneralModelViewSets,
     PrivateGeneralModelViewSets
 )
+from apps.core.api.viewsets.viewsets_document_types import (
+    PublicDocumentTypesViewSets,
+    PrivateDocumentTypesModelViewSets
+)
+from apps.core.api.viewsets.viewsets_payment_types import (
+    PublicPaymentTypesViewSets,
+    PrivatePaymentTypesModelViewSets
+)

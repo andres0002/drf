@@ -7,7 +7,7 @@ from import_export import resources # type: ignore
 from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
 from apps.features.expense.models import (
-    Suppliers, PaymentTypes, Vouchers,
+    Suppliers, Vouchers,
     CategoriesExpense, Expenses, Mermas
 )
 
@@ -24,18 +24,6 @@ class SuppliersAdmin(ImportExportModelAdmin):
     readonly_fields = ('created_at','updated_at','deleted_at')
     ordering = ('created_at',)
     resource_classes = (SuppliersResource,)
-
-class PaymentTypesResource(resources.ModelResource):
-    class Meta:
-        model = PaymentTypes
-
-class PaymentTypesAdmin(ImportExportModelAdmin):
-    search_fields = ('name',)
-    list_display = ('name', 'is_active', 'created_at','updated_at','deleted_at')
-    list_filter = ('is_active', 'created_at','updated_at','deleted_at')
-    readonly_fields = ('created_at','updated_at','deleted_at')
-    ordering = ('created_at',)
-    resource_classes = (PaymentTypesResource,)
 
 class VouchersResource(resources.ModelResource):
     class Meta:
@@ -86,7 +74,6 @@ class MermasAdmin(ImportExportModelAdmin):
     resource_classes = (MermasResource,)
 
 admin.site.register(Suppliers, SuppliersAdmin)
-admin.site.register(PaymentTypes, PaymentTypesAdmin)
 admin.site.register(Vouchers, VouchersAdmin)
 admin.site.register(CategoriesExpense, CategoriesExpenseAdmin)
 admin.site.register(Expenses, ExpensesAdmin)

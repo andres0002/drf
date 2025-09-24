@@ -1,14 +1,14 @@
 # py
 # django
 # drf
-from rest_framework import serializers
+from rest_framework import serializers # type: ignore
 # third
 # own
+from apps.core.api.serializers.serializers import PaymentTypesViewSerializer
 from apps.features.expense.models import Expenses
 from apps.features.expense.api.serializers.serializers import (
     SuppliersViewSerializer,
-    VouchersViewSerializer,
-    PaymentTypesViewSerializer
+    VouchersViewSerializer
 )
 from apps.features.user.api.serializers.serializers import (
     UsersViewSerializer

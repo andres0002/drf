@@ -7,9 +7,22 @@ from django.contrib.contenttypes.models import ContentType
 from import_export import resources # type: ignore
 from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
-from apps.features.user.models import Users
+from apps.features.user.models import Users, Roles
 
 # Register your models here.
+
+# Roles
+class RolesResource(resources.ModelResource):
+    class Meta:
+        model = Roles
+
+class RolesAdmin(ImportExportModelAdmin):
+    search_fields = ('name',)
+    list_display = ('name', 'is_active', 'created_at','updated_at','deleted_at')
+    list_filter = ('is_active', 'created_at','updated_at','deleted_at')
+    readonly_fields = ('created_at','updated_at','deleted_at')
+    ordering = ('created_at',)
+    resource_classes = (RolesResource,)
 
 # Users.
 class UsersResource(resources.ModelResource):
@@ -24,6 +37,7 @@ class UsersAdmin(ImportExportModelAdmin):
     resource_classes = (UsersResource,)
 
 # Registers.
+admin.site.register(Roles, RolesAdmin)
 admin.site.register(Users, UsersAdmin)
 admin.site.register(Permission)
 admin.site.register(ContentType)
