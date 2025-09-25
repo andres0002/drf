@@ -87,7 +87,7 @@ class Expenses(BaseModels):
     user = models.ForeignKey('user.Users', on_delete=models.CASCADE)
     supplier = models.ForeignKey(Suppliers, on_delete=models.CASCADE)
     payment_type = models.ForeignKey(PaymentTypes, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="expenses")
     category = models.ForeignKey(CategoriesExpense, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:

@@ -65,3 +65,11 @@ class PaymentTypes(BaseModels):
     def __str__(self):
         """Unicode representation of PaymentTypes."""
         return self.name
+
+class DiscountTypes(models.Model):
+    code = models.CharField(max_length=50, unique=True)   # Ej: "PERCENTAGE", "AMOUNT"
+    name = models.CharField(max_length=100)               # Ej: "Descuento porcentual", "Descuento fijo"
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.code})"

@@ -1,7 +1,7 @@
 # py
 # django
 # drf
-from rest_framework import serializers
+from rest_framework import serializers # type: ignore
 # third
 # own
 from apps.features.product.models import Products
@@ -11,11 +11,13 @@ from apps.features.product.api.serializers.serializers_categories_product import
 class ProductsViewSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Products
-        fields = '__all__'
+        exclude = ('profit_percentage',)
     
     measure_unit = MeasureUnitsViewSerializer()
     category = CategoriesProductViewSerializer()
     stock = serializers.ReadOnlyField()  # <- Aquí accede a la propiedad @property del modelo
+    # last_price = serializers.DecimalField(max_digits=10, decimal_places=2, read_only=True)
+    # suggested_price = serializers.DecimalField(max_digits=10, decimal_places=2, read_only=True)
     
     # def to_representation(self, instance):
     #     return {
@@ -47,6 +49,16 @@ class ProductsActionsSerializer(serializers.ModelSerializer):
         if category in ['', None]:
             raise serializers.ValidationError('Debe ingresar un category.')
         return category
+    # price -> cuando se envie en el request debe ser obligatorio.
+    def validate_price(self, price):
+        if price is None or price < 0:
+            raise serializers.ValidationError("El precio debe ser mayor o igual a 0.")
+        return price
+    # profit_percentage -> cuando se envie en el request debe ser obligatorio.
+    def validate_profit_percentage(self, profit_percentage):
+        if profit_percentage is None or profit_percentage < 0:
+            raise serializers.ValidationError("El margen de ganancia no puede ser negativo.")
+        return profit_percentage
     
     def validate(self, instance):
         # measure_unit -> para obligar a que me envie el param en el request aunque en el model permita null.
