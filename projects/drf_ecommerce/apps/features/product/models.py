@@ -51,7 +51,6 @@ class Products(BaseModels):
     measure_unit = models.ForeignKey(MeasureUnits, on_delete=models.CASCADE, verbose_name='Measure Unit', null=True)
     category = models.ForeignKey(CategoriesProduct, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
     image = models.ImageField('Product Image', upload_to='products/', blank=True, null=True)
-    discount_value = models.PositiveSmallIntegerField(default=0)
     
     # Precio de venta real (editable)
     price = models.DecimalField(
@@ -170,23 +169,6 @@ class Products(BaseModels):
             return max(Decimal("0.0"), self.price - promo.discount_value)
 
         return self.price
-
-class Indicators(BaseModels):
-    """Model definition for Indicators."""
-
-    # TODO: Define fields here
-    discount_value = models.PositiveSmallIntegerField(default=0)
-    category = models.ForeignKey(CategoriesProduct, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
-
-    class Meta:
-        """Meta definition for Indicators."""
-
-        verbose_name = 'Indicator'
-        verbose_name_plural = 'Indicators'
-
-    def __str__(self):
-        """Unicode representation of Indicators."""
-        return f'Offer category: {self.category_product}, discount value: {self.discount_value}.'
 
 class Promotions(BaseModels):
     """Model definition for Promotions."""

@@ -52,6 +52,7 @@ OWN_APPS = [
     'apps.features.product',
     'apps.features.expense',
     'apps.features.sale',
+    'apps.features.inventory',
 ]
 
 INSTALLED_APPS = BASE_APPS + THIRD_APPS + OWN_APPS

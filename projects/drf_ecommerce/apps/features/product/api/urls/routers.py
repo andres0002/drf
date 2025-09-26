@@ -10,8 +10,8 @@ from apps.features.product.api.viewsets.viewsets import (
     PrivateMeasureUnitsModelViewSets,
     PublicCategoriesProductViewSets,
     PrivateCategoriesProductModelViewSets,
-    PublicIndicatorsViewSets,
-    PrivateIndicatorsModelViewSets,
+    PublicPromotionsViewSets,
+    PrivatePromotionsModelViewSets,
     PublicProductsViewSets,
     PrivateProductsModelViewSets
 )
@@ -24,9 +24,9 @@ router.register(r'private_measure_units', PrivateMeasureUnitsModelViewSets, base
 # categories product.
 router.register(r'public_categories_product', PublicCategoriesProductViewSets, basename='public_categories_product')
 router.register(r'private_categories_product', PrivateCategoriesProductModelViewSets, basename='private_categories_product')
-# indicators.
-router.register(r'public_indicators', PublicIndicatorsViewSets, basename='public_indicators')
-router.register(r'private_indicators', PrivateIndicatorsModelViewSets, basename='private_indicators')
+# promotions.
+router.register(r'public_promotions', PublicPromotionsViewSets, basename='public_promotions')
+router.register(r'private_promotions', PrivatePromotionsModelViewSets, basename='private_promotions')
 # products.
 router.register(r'public_products', PublicProductsViewSets, basename='public_products')
 router.register(r'private_products', PrivateProductsModelViewSets, basename='private_products')

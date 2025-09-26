@@ -7,7 +7,7 @@ from import_export import resources # type: ignore
 from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
 from apps.core.models import (
-    PaymentTypes, DocumentTypes
+    PaymentTypes, DocumentTypes, DiscountTypes
 )
 
 # Register your models here.
@@ -36,5 +36,18 @@ class PaymentTypesAdmin(ImportExportModelAdmin):
     ordering = ('created_at',)
     resource_classes = (PaymentTypesResource,)
 
+class DiscountTypesResource(resources.ModelResource):
+    class Meta:
+        model = DiscountTypes
+
+class DiscountTypesAdmin(ImportExportModelAdmin):
+    search_fields = ('name',)
+    list_display = ('name', 'is_active', 'created_at','updated_at','deleted_at')
+    list_filter = ('is_active', 'created_at','updated_at','deleted_at')
+    readonly_fields = ('created_at','updated_at','deleted_at')
+    ordering = ('created_at',)
+    resource_classes = (DiscountTypesResource,)
+
 admin.site.register(DocumentTypes, DocumentTypesAdmin)
 admin.site.register(PaymentTypes, PaymentTypesAdmin)
+admin.site.register(DiscountTypes, DiscountTypesAdmin)

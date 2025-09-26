@@ -35,10 +35,11 @@ class ProductsViewSerializer(serializers.ModelSerializer):
     #         'image': instance.image.url if instance.image != "" else ""
     #     }
 
-class ProductsActionsSerializer(serializers.ModelSerializer):
+class ProductsActionsSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Products
         exclude = ('id','is_active','created_at','updated_at','deleted_at')
+    
     # measure_unit -> cuando se envie en el request debe ser obligatorio.
     def validate_measure_unit(self, measure_unit):
         if measure_unit in ['', None]:

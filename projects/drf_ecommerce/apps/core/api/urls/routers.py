@@ -9,7 +9,9 @@ from apps.core.api.viewsets.viewsets import (
     PublicDocumentTypesViewSets,
     PrivateDocumentTypesModelViewSets,
     PublicPaymentTypesViewSets,
-    PrivatePaymentTypesModelViewSets
+    PrivatePaymentTypesModelViewSets,
+    PublicDiscountTypesViewSets,
+    PrivateDiscountTypesModelViewSets
 )
 
 router = DefaultRouter()
@@ -21,6 +23,10 @@ router.register(r'private_document_types', PrivateDocumentTypesModelViewSets, ba
 # payment types.
 router.register(r'public_payment_types', PublicPaymentTypesViewSets, basename='public_payment_types')
 router.register(r'private_payment_types', PrivatePaymentTypesModelViewSets, basename='private_payment_types')
+
+# discount types.
+router.register(r'public_discount_types', PublicDiscountTypesViewSets, basename='public_discount_types')
+router.register(r'private_discount_types', PrivateDiscountTypesModelViewSets, basename='private_discount_types')
 
 # instance urlpatterns.
 urlpatterns = []

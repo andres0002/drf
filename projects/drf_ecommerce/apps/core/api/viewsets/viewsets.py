@@ -23,3 +23,7 @@ from apps.core.api.viewsets.viewsets_payment_types import (
     PublicPaymentTypesViewSets,
     PrivatePaymentTypesModelViewSets
 )
+from apps.core.api.viewsets.viewsets_discount_types import (
+    PublicDiscountTypesViewSets,
+    PrivateDiscountTypesModelViewSets
+)

@@ -6,7 +6,7 @@ from django.contrib import admin # type: ignore
 from import_export import resources # type: ignore
 from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
-from apps.features.product.models import MeasureUnits, CategoriesProduct, Indicators, Products
+from apps.features.product.models import MeasureUnits, CategoriesProduct, Promotions, Products
 
 # Register your models here.
 
@@ -36,18 +36,18 @@ class CategoriesProductAdmin(ImportExportModelAdmin):
     ordering = ('created_at',)
     resource_classes = (CategoriesProductResource,)
 
-# Indicators.
-class IndicatorsResource(resources.ModelResource):
+# Promotions.
+class PromotionsResource(resources.ModelResource):
     class Meta:
-        model = Indicators
+        model = Promotions
 
-class IndicatorsAdmin(ImportExportModelAdmin):
-    search_fields = ('discount_value',)
-    list_display = ('discount_value','category','created_at','updated_at','deleted_at')
-    list_filter = ('discount_value','category','created_at','updated_at','deleted_at')
-    readonly_fields = ('created_at','updated_at','deleted_at')
+class PromotionsAdmin(ImportExportModelAdmin):
+    search_fields = ('name','description')
+    list_display = ('name','description','discount_type','discount_value','start_date','end_date','is_valid','created_at','updated_at','deleted_at')
+    list_filter = ('discount_type','start_date','end_date','created_at','updated_at','deleted_at')
+    readonly_fields = ('is_valid','created_at','updated_at','deleted_at')
     ordering = ('created_at',)
-    resource_classes = (IndicatorsResource,)
+    resource_classes = (PromotionsResource,)
 
 # Products.
 class ProductsResource(resources.ModelResource):
@@ -56,14 +56,18 @@ class ProductsResource(resources.ModelResource):
 
 class ProductsAdmin(ImportExportModelAdmin):
     search_fields = ('name','description')
-    list_display = ('name','description','measure_unit','category', 'discount_value','created_at','updated_at','deleted_at')
+    list_display = ('name','description','measure_unit','category','created_at','updated_at','deleted_at')
     list_filter = ('measure_unit','category','created_at','updated_at','deleted_at')
-    readonly_fields = ('created_at','updated_at','deleted_at')
+    readonly_fields = ('suggested_price_display','created_at','updated_at','deleted_at')
     ordering = ('created_at',)
     resource_classes = (ProductsResource,)
+    
+    def suggested_price_display(self, obj):
+        return obj.suggested_price
+    suggested_price_display.short_description = "Suggested Price"
 
 # Regiters.
 admin.site.register(MeasureUnits, MeasureUnitsAdmin)
 admin.site.register(CategoriesProduct, CategoriesProductAdmin)
-admin.site.register(Indicators, IndicatorsAdmin)
+admin.site.register(Promotions, PromotionsAdmin)
 admin.site.register(Products, ProductsAdmin)

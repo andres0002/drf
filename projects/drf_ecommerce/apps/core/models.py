@@ -66,10 +66,21 @@ class PaymentTypes(BaseModels):
         """Unicode representation of PaymentTypes."""
         return self.name
 
-class DiscountTypes(models.Model):
+class DiscountTypes(BaseModels):
+    """Model definition for DiscountTypes."""
+    
+    # TODO: Define fields here
     code = models.CharField(max_length=50, unique=True)   # Ej: "PERCENTAGE", "AMOUNT"
     name = models.CharField(max_length=100)               # Ej: "Descuento porcentual", "Descuento fijo"
     description = models.TextField(blank=True, null=True)
+    
+    class Meta:
+        """Meta definition for DiscountTypes."""
+
+        verbose_name = 'Discount Type'
+        verbose_name_plural = 'Discount Types'
+        ordering = ['id']
 
     def __str__(self):
+        """Unicode representation of DiscountTypes."""
         return f"{self.name} ({self.code})"

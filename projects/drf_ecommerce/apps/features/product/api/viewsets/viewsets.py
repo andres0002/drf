@@ -11,9 +11,9 @@ from apps.features.product.api.viewsets.viewsets_categories_product import (
     PublicCategoriesProductViewSets,
     PrivateCategoriesProductModelViewSets
 )
-from apps.features.product.api.viewsets.viewsets_indicators import (
-    PublicIndicatorsViewSets,
-    PrivateIndicatorsModelViewSets
+from apps.features.product.api.viewsets.viewsets_promotions import (
+    PublicPromotionsViewSets,
+    PrivatePromotionsModelViewSets
 )
 from apps.features.product.api.viewsets.viewsets_products import (
     PublicProductsViewSets,

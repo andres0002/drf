@@ -12,6 +12,10 @@ from apps.core.api.serializers.serializers_payment_types import (
     PaymentTypesViewSerializer,
     PaymentTypesActionsSerializer
 )
+from apps.core.api.serializers.serializers_discount_types import (
+    DiscountTypesViewSerializer,
+    DiscountTypesActionsSerializer
+)
 
 class BulkDeleteSerializer(serializers.Serializer):
     ids = serializers.ListField(
