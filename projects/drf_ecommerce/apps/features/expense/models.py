@@ -58,7 +58,7 @@ class Vouchers(BaseModels):
         return self.name
 
 class ExpenseCategories(BaseModels):
-    """Model definition for CategoriesExpense."""
+    """Model definition for ExpenseCategories."""
 
     # TODO: Define fields here
     code = models.CharField('Code', max_length=50, unique=True)
@@ -66,14 +66,14 @@ class ExpenseCategories(BaseModels):
     description = models.CharField('Description', max_length=50, unique=True, blank=False, null=False)
 
     class Meta:
-        """Meta definition for CategoriesExpense."""
+        """Meta definition for ExpenseCategories."""
 
-        verbose_name = 'Category Expense'
-        verbose_name_plural = 'Categories Expense'
+        verbose_name = 'Expense Category'
+        verbose_name_plural = 'Expense Categories'
         ordering = ['id']
 
     def __str__(self):
-        """Unicode representation of CategoriesExpense."""
+        """Unicode representation of ExpenseCategories."""
         return self.name
 
 class Expenses(BaseModels):
