@@ -32,8 +32,10 @@ class Products(BaseModels):
     """Model definition for Products."""
     
     # TODO: Define fields here
-    name = models.CharField('Product Name', max_length=150, unique=True, blank=False, null=False)
+    code = models.CharField(max_length=50, unique=True)
+    name = models.CharField('Product Name', max_length=150, unique=True)
     description = models.TextField('Product Description', blank=False, null=False)
+    barcode = models.CharField(max_length=150, blank=True, null=True, unique=True)
     measure_unit = models.ForeignKey(MeasureUnits, on_delete=models.CASCADE, verbose_name='Measure Unit', null=True)
     category = models.ForeignKey(ProductCategories, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
     image = models.ImageField('Product Image', upload_to='products/', blank=True, null=True)
