@@ -8,7 +8,7 @@ from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
 from apps.features.expense.models import (
     Suppliers, Vouchers,
-    CategoriesExpense, Expenses, Mermas
+    ExpenseCategories, Expenses, Mermas
 )
 
 # Register your models here.
@@ -37,17 +37,17 @@ class VouchersAdmin(ImportExportModelAdmin):
     ordering = ('created_at',)
     resource_classes = (VouchersResource,)
 
-class CategoriesExpenseResource(resources.ModelResource):
+class ExpenseCategoriesResource(resources.ModelResource):
     class Meta:
-        model = CategoriesExpense
+        model = ExpenseCategories
 
-class CategoriesExpenseAdmin(ImportExportModelAdmin):
-    search_fields = ('name',)
-    list_display = ('name', 'is_active', 'created_at','updated_at','deleted_at')
+class ExpenseCategoriesAdmin(ImportExportModelAdmin):
+    search_fields = ('code', 'name', 'description')
+    list_display = ('code', 'name', 'description', 'is_active', 'created_at','updated_at','deleted_at')
     list_filter = ('is_active', 'created_at','updated_at','deleted_at')
     readonly_fields = ('created_at','updated_at','deleted_at')
     ordering = ('created_at',)
-    resource_classes = (CategoriesExpenseResource,)
+    resource_classes = (ExpenseCategoriesResource,)
 
 class ExpensesResource(resources.ModelResource):
     class Meta:
@@ -75,6 +75,6 @@ class MermasAdmin(ImportExportModelAdmin):
 
 admin.site.register(Suppliers, SuppliersAdmin)
 admin.site.register(Vouchers, VouchersAdmin)
-admin.site.register(CategoriesExpense, CategoriesExpenseAdmin)
+admin.site.register(ExpenseCategories, ExpenseCategoriesAdmin)
 admin.site.register(Expenses, ExpensesAdmin)
 admin.site.register(Mermas, MermasAdmin)

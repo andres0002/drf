@@ -11,9 +11,9 @@ from apps.features.expense.api.serializers.serializers_vouchers import (
     VouchersViewSerializer,
     VouchersActionsSerializer
 )
-from apps.features.expense.api.serializers.serializers_categories_expense import (
-    CategoriesExpenseViewSerializer,
-    CategoriesExpenseActionsSerializer
+from apps.features.expense.api.serializers.serializers_expense_categories import (
+    ExpenseCategoriesViewSerializer,
+    ExpenseCategoriesActionsSerializer
 )
 from apps.features.expense.api.serializers.serializers_expenses import (
     ExpensesViewSerializer,

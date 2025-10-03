@@ -11,9 +11,9 @@ from apps.features.expense.api.viewsets.viewsets_vouchers import (
     PublicVouchersViewSets,
     PrivateVouchersModelViewSets
 )
-from apps.features.expense.api.viewsets.viewsets_categories_expense import (
-    PublicCategoriesExpenseViewSets,
-    PrivateCategoriesExpenseModelViewSets
+from apps.features.expense.api.viewsets.viewsets_expense_categories import (
+    PublicExpenseCategoriesViewSets,
+    PrivateExpenseCategoriesModelViewSets
 )
 from apps.features.expense.api.viewsets.viewsets_expenses import (
     PublicExpensesViewSets,

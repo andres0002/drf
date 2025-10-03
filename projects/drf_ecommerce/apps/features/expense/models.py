@@ -57,11 +57,13 @@ class Vouchers(BaseModels):
         """Unicode representation of Vouchers."""
         return self.name
 
-class CategoriesExpense(BaseModels):
+class ExpenseCategories(BaseModels):
     """Model definition for CategoriesExpense."""
 
     # TODO: Define fields here
-    name = models.CharField('Categories Expense Name', max_length=100)
+    code = models.CharField('Code', max_length=50, unique=True)
+    name = models.CharField('Name', max_length=100)
+    description = models.CharField('Description', max_length=50, unique=True, blank=False, null=False)
 
     class Meta:
         """Meta definition for CategoriesExpense."""
@@ -88,7 +90,7 @@ class Expenses(BaseModels):
     supplier = models.ForeignKey(Suppliers, on_delete=models.CASCADE)
     payment_type = models.ForeignKey(PaymentTypes, on_delete=models.CASCADE)
     product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="expenses")
-    category = models.ForeignKey(CategoriesExpense, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey(ExpenseCategories, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         """Meta definition for Expenses."""

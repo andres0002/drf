@@ -10,8 +10,8 @@ from apps.features.expense.api.viewsets.viewsets import (
     PrivateSuppliersModelViewSets,
     PublicVouchersViewSets,
     PrivateVouchersModelViewSets,
-    PublicCategoriesExpenseViewSets,
-    PrivateCategoriesExpenseModelViewSets,
+    PublicExpenseCategoriesViewSets,
+    PrivateExpenseCategoriesModelViewSets,
     PublicExpensesViewSets,
     PrivateExpensesModelViewSets,
     PublicMermasViewSets,
@@ -26,9 +26,9 @@ router.register(r'private_suppliers', PrivateSuppliersModelViewSets, basename='p
 # vouchers.
 router.register(r'public_vouchers', PublicVouchersViewSets, basename='public_vouchers')
 router.register(r'private_vouchers', PrivateVouchersModelViewSets, basename='private_vouchers')
-# categories expense.
-router.register(r'public_categories_expense', PublicCategoriesExpenseViewSets, basename='public_categories_expense')
-router.register(r'private_categories_expense', PrivateCategoriesExpenseModelViewSets, basename='private_categories_expense')
+# expense categories.
+router.register(r'public_expense_categories', PublicExpenseCategoriesViewSets, basename='public_expense_categories')
+router.register(r'private_expense_categories', PrivateExpenseCategoriesModelViewSets, basename='private_expense_categories')
 # expenses.
 router.register(r'public_expenses', PublicExpensesViewSets, basename='public_expenses')
 router.register(r'private_expenses', PrivateExpensesModelViewSets, basename='private_expenses')

@@ -64,6 +64,27 @@ class Products(BaseModels):
         related_name="parent_products",
         blank=True
     )
+    
+    # -------------------------
+    # Nuevo método para receta
+    # -------------------------
+    def get_recipe(self):
+        """
+        Retorna la receta del producto en forma de lista de dicts.
+        Ejemplo:
+        [
+            {'subproduct': 'Harina', 'quantity': 500, 'unit': 'Gramos'},
+            {'subproduct': 'Azúcar', 'quantity': 50, 'unit': 'Gramos'}
+        ]
+        """
+        return [
+            {
+                "subproduct": comp.subproduct.name,
+                "quantity": comp.quantity,
+                "unit": comp.measure_unit.name
+            }
+            for comp in self.components.select_related("subproduct", "measure_unit").all()
+        ]
 
     class Meta:
         """Meta definition for Products."""
