@@ -54,6 +54,8 @@ urlpatterns = [
     path('product/', include(('apps.features.product.api.urls.routers','product'))),
     path('expense/', include(('apps.features.expense.api.urls.routers','expense'))),
     path('sale/', include(('apps.features.sale.api.urls.routers','sale'))),
+    path('inventory/', include(('apps.features.inventory.api.urls.routers','inventory'))),
+    path('cart/', include(('apps.features.cart.api.urls.routers','cart'))),
 ]
 
 # development

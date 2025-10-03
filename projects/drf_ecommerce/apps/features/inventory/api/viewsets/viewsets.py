@@ -1,3 +1,13 @@
-from django.shortcuts import render
-
-# Create your views here.
+# py
+# django
+# drf
+# third
+# own
+from apps.features.inventory.api.viewsets.viewsets_inventory_movements import (
+    PublicInventoryMovementsViewSets,
+    PrivateInventoryMovementsModelViewSets
+)
+from apps.features.inventory.api.viewsets.viewsets_stocks import (
+    PublicStocksViewSets,
+    PrivateStocksModelViewSets
+)

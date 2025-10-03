@@ -6,30 +6,30 @@ from rest_framework.routers import DefaultRouter # type: ignore
 # third
 # own
 from apps.features.product.api.viewsets.viewsets import (
-    PublicMeasureUnitsViewSets,
-    PrivateMeasureUnitsModelViewSets,
-    PublicCategoriesProductViewSets,
-    PrivateCategoriesProductModelViewSets,
+    PublicProductCategoriesViewSets,
+    PrivateProductCategoriesModelViewSets,
     PublicPromotionsViewSets,
     PrivatePromotionsModelViewSets,
     PublicProductsViewSets,
-    PrivateProductsModelViewSets
+    PrivateProductsModelViewSets,
+    PublicProductComponentsViewSets,
+    PrivateProductComponentsModelViewSets
 )
 
 router = DefaultRouter()
 
-# measure units.
-router.register(r'public_measure_units', PublicMeasureUnitsViewSets, basename='public_measure_units')
-router.register(r'private_measure_units', PrivateMeasureUnitsModelViewSets, basename='private_measure_units')
-# categories product.
-router.register(r'public_categories_product', PublicCategoriesProductViewSets, basename='public_categories_product')
-router.register(r'private_categories_product', PrivateCategoriesProductModelViewSets, basename='private_categories_product')
+# product categories.
+router.register(r'public_product_categories', PublicProductCategoriesViewSets, basename='public_product_categories')
+router.register(r'private_product_categories', PrivateProductCategoriesModelViewSets, basename='private_product_categories')
 # promotions.
 router.register(r'public_promotions', PublicPromotionsViewSets, basename='public_promotions')
 router.register(r'private_promotions', PrivatePromotionsModelViewSets, basename='private_promotions')
 # products.
 router.register(r'public_products', PublicProductsViewSets, basename='public_products')
 router.register(r'private_products', PrivateProductsModelViewSets, basename='private_products')
+# product components.
+router.register(r'public_product_components', PublicProductComponentsViewSets, basename='public_product_components')
+router.register(r'private_product_components', PrivateProductComponentsModelViewSets, basename='private_product_components')
 
 # instance urlpatterns.
 urlpatterns = []

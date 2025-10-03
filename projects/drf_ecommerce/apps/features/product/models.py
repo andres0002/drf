@@ -6,40 +6,26 @@ from django.utils import timezone # type: ignore
 # drf
 # third
 # own
-from apps.core.models import BaseModels, DiscountTypes
+from apps.core.models import BaseModels, DiscountTypes, MeasureUnits
 
 # Create your models here.
 
-class MeasureUnits(BaseModels):
-    """Model definition for MeasureUnits."""
-
-    # TODO: Define fields here.
-    description = models.CharField('Description', max_length=50, blank=False, null=False, unique=True)
-
-    class Meta:
-        """Meta definition for MeasureUnits."""
-
-        verbose_name = 'MeasureUnit'
-        verbose_name_plural = 'MeasureUnits'
-
-    def __str__(self):
-        """Unicode representation of MeasureUnits."""
-        return self.description
-
-class CategoriesProduct(BaseModels):
-    """Model definition for CategoriesProduct."""
+class ProductCategories(BaseModels):
+    """Model definition for ProductCategories."""
 
     # TODO: Define fields here
+    code = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=100)   
     description = models.CharField('Description', max_length=50, unique=True, blank=False, null=False)
 
     class Meta:
-        """Meta definition for CategoriesProduct."""
+        """Meta definition for ProductCategories."""
 
-        verbose_name = 'CategoriesProduct'
-        verbose_name_plural = 'CategoriesProducts'
+        verbose_name = 'Product Categorie'
+        verbose_name_plural = 'Product Categories'
 
     def __str__(self):
-        """Unicode representation of CategoriesProduct."""
+        """Unicode representation of ProductCategories."""
         return self.description
 
 class Products(BaseModels):
@@ -49,7 +35,7 @@ class Products(BaseModels):
     name = models.CharField('Product Name', max_length=150, unique=True, blank=False, null=False)
     description = models.TextField('Product Description', blank=False, null=False)
     measure_unit = models.ForeignKey(MeasureUnits, on_delete=models.CASCADE, verbose_name='Measure Unit', null=True)
-    category = models.ForeignKey(CategoriesProduct, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
+    category = models.ForeignKey(ProductCategories, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
     image = models.ImageField('Product Image', upload_to='products/', blank=True, null=True)
     
     # Precio de venta real (editable)
@@ -68,6 +54,15 @@ class Products(BaseModels):
         decimal_places=2,
         default=30.00,
         help_text="Porcentaje de ganancia sobre el costo."
+    )
+    
+    # Subproductos (ingredientes/insumos)
+    subproducts = models.ManyToManyField(
+        "self",
+        through="ProductComponents",
+        symmetrical=False,
+        related_name="parent_products",
+        blank=True
     )
 
     class Meta:
@@ -170,6 +165,40 @@ class Products(BaseModels):
 
         return self.price
 
+class ProductComponents(BaseModels):
+    """Model definition for ProductComponents."""
+    """Relación producto <-> subproducto (ej: Pan Francés -> 500g Harina + 50g Azúcar)."""
+
+    # TODO: Define fields here
+    product = models.ForeignKey(
+        Products,
+        on_delete=models.CASCADE,
+        related_name="components"
+    )
+    subproduct = models.ForeignKey(
+        Products,
+        on_delete=models.CASCADE,
+        related_name="used_in"
+    )
+    quantity = models.DecimalField(max_digits=10, decimal_places=2)
+    measure_unit = models.ForeignKey(
+        MeasureUnits,
+        on_delete=models.PROTECT,
+        verbose_name="Unit of Measure"
+    )
+
+    class Meta:
+        """Meta definition for ProductComponents."""
+
+        verbose_name = 'Product Component'
+        verbose_name_plural = 'Product Components'
+        unique_together = ("product", "subproduct")
+
+    def __str__(self):
+        """Unicode representation of ProductComponents."""
+        return f"{self.quantity} {self.measure_unit} de {self.subproduct} en {self.product}"
+
+
 class Promotions(BaseModels):
     """Model definition for Promotions."""
 
@@ -197,7 +226,7 @@ class Promotions(BaseModels):
 
     # Aplicación a productos o categorías
     categories = models.ManyToManyField(
-        CategoriesProduct,
+        ProductCategories,
         related_name="promotions",
         blank=True
     )

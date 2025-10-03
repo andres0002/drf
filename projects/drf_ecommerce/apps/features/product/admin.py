@@ -6,7 +6,7 @@ from django.contrib import admin # type: ignore
 from import_export import resources # type: ignore
 from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
-from apps.features.product.models import MeasureUnits, CategoriesProduct, Promotions, Products
+from apps.features.product.models import MeasureUnits, ProductCategories, Promotions, Products, ProductComponents
 
 # Register your models here.
 
@@ -24,17 +24,17 @@ class MeasureUnitsAdmin(ImportExportModelAdmin):
     resource_classes = (MeasureUnitsResource,)
 
 # CategoriesProduct.
-class CategoriesProductResource(resources.ModelResource):
+class ProductCategoriesResource(resources.ModelResource):
     class Meta:
-        model = CategoriesProduct
+        model = ProductCategories
 
-class CategoriesProductAdmin(ImportExportModelAdmin):
+class ProductCategoriesAdmin(ImportExportModelAdmin):
     search_fields = ('description',)
     list_display = ('description','created_at','updated_at','deleted_at')
     list_filter = ('created_at','updated_at','deleted_at')
     readonly_fields = ('created_at','updated_at','deleted_at')
     ordering = ('created_at',)
-    resource_classes = (CategoriesProductResource,)
+    resource_classes = (ProductCategoriesResource,)
 
 # Promotions.
 class PromotionsResource(resources.ModelResource):
@@ -66,8 +66,22 @@ class ProductsAdmin(ImportExportModelAdmin):
         return obj.suggested_price
     suggested_price_display.short_description = "Suggested Price"
 
+# ProductComponents.
+class ProductComponentsResource(resources.ModelResource):
+    class Meta:
+        model = ProductComponents
+
+class ProductComponentsAdmin(ImportExportModelAdmin):
+    # search_fields = ('name','description')
+    list_display = ('product','subproduct','measure_unit','quantity','created_at','updated_at','deleted_at')
+    list_filter = ('product','subproduct','measure_unit','created_at','updated_at','deleted_at')
+    readonly_fields = ('created_at','updated_at','deleted_at')
+    ordering = ('created_at',)
+    resource_classes = (ProductComponentsResource,)
+
 # Regiters.
 admin.site.register(MeasureUnits, MeasureUnitsAdmin)
-admin.site.register(CategoriesProduct, CategoriesProductAdmin)
+admin.site.register(ProductCategories, ProductCategoriesAdmin)
 admin.site.register(Promotions, PromotionsAdmin)
 admin.site.register(Products, ProductsAdmin)
+admin.site.register(ProductComponents, ProductComponentsAdmin)

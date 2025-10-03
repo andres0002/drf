@@ -3,13 +3,9 @@
 # drf
 # third
 # own
-from apps.features.product.api.viewsets.viewsets_measure_units import (
-    PublicMeasureUnitsViewSets,
-    PrivateMeasureUnitsModelViewSets
-)
-from apps.features.product.api.viewsets.viewsets_categories_product import (
-    PublicCategoriesProductViewSets,
-    PrivateCategoriesProductModelViewSets
+from apps.features.product.api.viewsets.viewsets_product_categories import (
+    PublicProductCategoriesViewSets,
+    PrivateProductCategoriesModelViewSets
 )
 from apps.features.product.api.viewsets.viewsets_promotions import (
     PublicPromotionsViewSets,
@@ -18,4 +14,8 @@ from apps.features.product.api.viewsets.viewsets_promotions import (
 from apps.features.product.api.viewsets.viewsets_products import (
     PublicProductsViewSets,
     PrivateProductsModelViewSets
+)
+from apps.features.product.api.viewsets.viewsets_product_components import (
+    PublicProductComponentsViewSets,
+    PrivateProductComponentsModelViewSets
 )

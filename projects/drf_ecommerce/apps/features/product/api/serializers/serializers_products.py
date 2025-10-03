@@ -5,8 +5,8 @@ from rest_framework import serializers # type: ignore
 # third
 # own
 from apps.features.product.models import Products
-from apps.features.product.api.serializers.serializers_measure_units import MeasureUnitsViewSerializer
-from apps.features.product.api.serializers.serializers_categories_product import CategoriesProductViewSerializer
+from apps.core.api.serializers.serializers_measure_units import MeasureUnitsViewSerializer
+from apps.features.product.api.serializers.serializers_product_categories import ProductCategoriesViewSerializer
 
 class ProductsViewSerializer(serializers.ModelSerializer):    
     class Meta:
@@ -14,7 +14,7 @@ class ProductsViewSerializer(serializers.ModelSerializer):
         exclude = ('profit_percentage',)
     
     measure_unit = MeasureUnitsViewSerializer()
-    category = CategoriesProductViewSerializer()
+    category = ProductCategoriesViewSerializer()
     stock = serializers.ReadOnlyField()  # <- Aquí accede a la propiedad @property del modelo
     # last_price = serializers.DecimalField(max_digits=10, decimal_places=2, read_only=True)
     # suggested_price = serializers.DecimalField(max_digits=10, decimal_places=2, read_only=True)

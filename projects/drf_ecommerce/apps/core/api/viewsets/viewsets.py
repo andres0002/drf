@@ -27,3 +27,11 @@ from apps.core.api.viewsets.viewsets_discount_types import (
     PublicDiscountTypesViewSets,
     PrivateDiscountTypesModelViewSets
 )
+from apps.core.api.viewsets.viewsets_movement_types import (
+    PublicMovementTypesViewSets,
+    PrivateMovementTypesModelViewSets
+)
+from apps.core.api.viewsets.viewsets_measure_units import (
+    PublicMeasureUnitsViewSets,
+    PrivateMeasureUnitsModelViewSets
+)

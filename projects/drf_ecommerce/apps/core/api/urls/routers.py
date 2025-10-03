@@ -11,7 +11,11 @@ from apps.core.api.viewsets.viewsets import (
     PublicPaymentTypesViewSets,
     PrivatePaymentTypesModelViewSets,
     PublicDiscountTypesViewSets,
-    PrivateDiscountTypesModelViewSets
+    PrivateDiscountTypesModelViewSets,
+    PublicMovementTypesViewSets,
+    PrivateMovementTypesModelViewSets,
+    PublicMeasureUnitsViewSets,
+    PrivateMeasureUnitsModelViewSets
 )
 
 router = DefaultRouter()
@@ -27,6 +31,14 @@ router.register(r'private_payment_types', PrivatePaymentTypesModelViewSets, base
 # discount types.
 router.register(r'public_discount_types', PublicDiscountTypesViewSets, basename='public_discount_types')
 router.register(r'private_discount_types', PrivateDiscountTypesModelViewSets, basename='private_discount_types')
+
+# movement types.
+router.register(r'public_movement_types', PublicMovementTypesViewSets, basename='public_movement_types')
+router.register(r'private_movement_types', PrivateMovementTypesModelViewSets, basename='private_movement_types')
+
+# measure units.
+router.register(r'public_measure_units', PublicMeasureUnitsViewSets, basename='public_measure_units')
+router.register(r'private_measure_units', PrivateMeasureUnitsModelViewSets, basename='private_measure_units')
 
 # instance urlpatterns.
 urlpatterns = []

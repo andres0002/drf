@@ -84,3 +84,50 @@ class DiscountTypes(BaseModels):
     def __str__(self):
         """Unicode representation of DiscountTypes."""
         return f"{self.name} ({self.code})"
+
+class MovementTypes(BaseModels):
+    """Model definition for MovementTypes."""
+
+    code = models.CharField(max_length=50, unique=True)   # Ej: "IN", "OUT", "ADJ", "TRF", "RES"
+    name = models.CharField(max_length=100)               # Ej: "Ingreso", "Salida", "Ajuste, Transferencia, Reserva"
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        """Meta definition for MovementTypes."""
+        verbose_name = 'Movement Type'
+        verbose_name_plural = 'Movement Types'
+        ordering = ['id']
+
+    def __str__(self):
+        """Unicode representation of MovementTypes."""
+        return f"{self.name} ({self.code})"
+
+class MeasureUnits(BaseModels):
+    """Model definition for MeasureUnits."""
+
+    # TODO: Define fields here
+    code = models.CharField(
+        max_length=50,
+        unique=True,
+        help_text="Código único de la unidad de medida. Ej: KG, LT, UN"
+    )
+    name = models.CharField(
+        max_length=100,
+        help_text="Nombre de la unidad de medida. Ej: Kilogramo, Litro, Unidad"
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        help_text="Descripción detallada de la unidad de medida"
+    )
+
+    class Meta:
+        """Meta definition for MeasureUnits."""
+
+        verbose_name = 'Measure Unit'
+        verbose_name_plural = 'Measure Units'
+        ordering = ['id']
+
+    def __str__(self):
+        """Unicode representation of MeasureUnits."""
+        return f"{self.name} ({self.code})"
