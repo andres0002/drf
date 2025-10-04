@@ -23,3 +23,7 @@ from apps.features.user.api.viewsets.viewsets_fingerprints import (
     PublicFingerprintsViewSets,
     PrivateFingerprintsModelViewSets
 )
+from apps.features.user.api.viewsets.viewsets_access_logs import (
+    PublicAccessLogsViewSets,
+    PrivateAccessLogsModelViewSets
+)

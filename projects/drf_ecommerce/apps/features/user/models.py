@@ -148,66 +148,66 @@ class Fingerprints(BaseModels):
         """Unicode representation of Fingerprints."""
         return f"{self.user.username} - {self.get_finger_display()}"
 
-# class AccessLogs(BaseModels):
-#     """Model definition for AccessLogs."""
+class AccessLogs(BaseModels):
+    """Model definition for AccessLogs."""
     
-#     ACCESS_TYPE = [
-#         ('entry', 'Entrada'),
-#         ('exit', 'Salida'),
-#     ]
+    ACCESS_TYPE = [
+        ('entry', 'Entrada'),
+        ('exit', 'Salida'),
+    ]
 
-#     # TODO: Define fields here
-#     user = models.ForeignKey(
-#         Users,
-#         on_delete=models.SET_NULL,
-#         null=True,
-#         blank=True,
-#         related_name='access_logs',
-#         verbose_name="Usuario"
-#     )
-#     fingerprint = models.ForeignKey(
-#         Fingerprints,
-#         on_delete=models.SET_NULL,
-#         null=True,
-#         blank=True,
-#         related_name='access_logs',
-#         verbose_name="Huella usada"
-#     )
-#     device_serial_number = models.CharField(
-#         max_length=100,
-#         verbose_name="Dispositivo lector",
-#         help_text="Número de serie o identificador del lector que registró el acceso."
-#     )
-#     verified = models.BooleanField(
-#         default=False,
-#         verbose_name="Huella verificada"
-#     )
-#     access_type = models.CharField(
-#         max_length=10,
-#         choices=ACCESS_TYPE,
-#         default='entry',
-#         verbose_name="Tipo de acceso"
-#     )
-#     timestamp = models.DateTimeField(
-#         auto_now_add=True,
-#         verbose_name="Fecha y hora del acceso"
-#     )
-#     notes = models.TextField(
-#         blank=True,
-#         null=True,
-#         verbose_name="Notas o detalles"
-#     )
+    # TODO: Define fields here
+    user = models.ForeignKey(
+        Users,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='access_logs',
+        verbose_name="Usuario"
+    )
+    fingerprint = models.ForeignKey(
+        Fingerprints,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='access_logs',
+        verbose_name="Huella usada"
+    )
+    device_serial_number = models.CharField(
+        max_length=100,
+        verbose_name="Dispositivo lector",
+        help_text="Número de serie o identificador del lector que registró el acceso."
+    )
+    verified = models.BooleanField(
+        default=False,
+        verbose_name="Huella verificada"
+    )
+    access_type = models.CharField(
+        max_length=10,
+        choices=ACCESS_TYPE,
+        default='entry',
+        verbose_name="Tipo de acceso"
+    )
+    timestamp = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Fecha y hora del acceso"
+    )
+    notes = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Notas o detalles"
+    )
 
-#     class Meta:
-#         """Meta definition for AccessLogs."""
+    class Meta:
+        """Meta definition for AccessLogs."""
 
-#         verbose_name = 'AccessLog'
-#         verbose_name_plural = 'AccessLogs'
-#         ordering = ['-timestamp']
+        verbose_name = 'AccessLog'
+        verbose_name_plural = 'AccessLogs'
+        ordering = ['-timestamp']
 
-#     def __str__(self):
-#         """Unicode representation of AccessLogs."""
-#         user = self.user.username if self.user else "Desconocido"
-#         type = "Entrada" if self.access_type == "entry" else "Salida"
-#         state = "Éxito" if self.verified else "Error"
-#         return f"({state}) {user} - {type} ({self.timestamp.strftime('%Y-%m-%d %H:%M:%S')})"
+    def __str__(self):
+        """Unicode representation of AccessLogs."""
+        user = self.user.username if self.user else "Desconocido"
+        type = "Entrada" if self.access_type == "entry" else "Salida"
+        state = "Éxito" if self.verified else "Error"
+        return f"({state}) {user} - {type} ({self.timestamp.strftime('%Y-%m-%d %H:%M:%S')})"

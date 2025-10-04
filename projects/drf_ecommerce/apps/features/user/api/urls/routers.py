@@ -14,7 +14,9 @@ from apps.features.user.api.viewsets.viewsets import (
     PublicUsersViewSets,
     PrivateUsersModelViewSets,
     PublicFingerprintsViewSets,
-    PrivateFingerprintsModelViewSets
+    PrivateFingerprintsModelViewSets,
+    PublicAccessLogsViewSets,
+    PrivateAccessLogsModelViewSets
 )
 
 router = DefaultRouter()
@@ -34,6 +36,9 @@ router.register(r'private_users', PrivateUsersModelViewSets, basename='private_u
 # fingerprints.
 router.register(r'public_fingerprints', PublicFingerprintsViewSets, basename='public_fingerprints')
 router.register(r'private_fingerprints', PrivateFingerprintsModelViewSets, basename='private_fingerprints')
+# access logs.
+router.register(r'public_access_logs', PublicAccessLogsViewSets, basename='public_access_logs')
+router.register(r'private_access_logs', PrivateAccessLogsModelViewSets, basename='private_access_logs')
 
 # instance urlpatterns.
 urlpatterns = []

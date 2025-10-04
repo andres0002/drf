@@ -26,3 +26,7 @@ from apps.features.user.api.serializers.serializers_fingerprints import (
     FingerprintsViewSerializer,
     FingerprintsActionsSerializer
 )
+from apps.features.user.api.serializers.serializers_access_logs import (
+    AccessLogsViewSerializer,
+    AccessLogsActionsSerializer
+)
