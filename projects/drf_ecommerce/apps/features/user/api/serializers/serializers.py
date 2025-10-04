@@ -22,3 +22,7 @@ from apps.features.user.api.serializers.serializers_users import (
     UsersResetPasswordRequestSerializer,
     UsersResetPasswordConfirmSerializer
 )
+from apps.features.user.api.serializers.serializers_fingerprints import (
+    FingerprintsViewSerializer,
+    FingerprintsActionsSerializer
+)

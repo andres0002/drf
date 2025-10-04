@@ -1,13 +1,13 @@
 # py
 # django
-from django.contrib import admin
-from django.contrib.auth.models import Permission
-from django.contrib.contenttypes.models import ContentType
+from django.contrib import admin # type: ignore
+from django.contrib.auth.models import Permission # type: ignore
+from django.contrib.contenttypes.models import ContentType # type: ignore
 # third
 from import_export import resources # type: ignore
 from import_export.admin import ImportExportModelAdmin # type: ignore
 # own
-from apps.features.user.models import Users, Roles
+from apps.features.user.models import Users, Roles, Fingerprints
 
 # Register your models here.
 
@@ -36,8 +36,21 @@ class UsersAdmin(ImportExportModelAdmin):
     readonly_fields = ('created_at','updated_at','deleted_at')
     resource_classes = (UsersResource,)
 
+# Fingerprints.
+class FingerPrintsResource(resources.ModelResource):
+    class Meta:
+        model = Fingerprints
+
+class FingerPrintsAdmin(ImportExportModelAdmin):
+    # search_fields = ('field_name',)
+    list_display = ('user','finger','template','device_serial_number','is_active','created_at','updated_at','deleted_at')
+    list_filter = ('user','device_serial_number','is_active','created_at','updated_at','deleted_at')
+    readonly_fields = ('created_at','updated_at','deleted_at')
+    resource_classes = (FingerPrintsResource,)
+
 # Registers.
 admin.site.register(Roles, RolesAdmin)
 admin.site.register(Users, UsersAdmin)
+admin.site.register(Fingerprints, FingerPrintsAdmin)
 admin.site.register(Permission)
 admin.site.register(ContentType)

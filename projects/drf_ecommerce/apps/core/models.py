@@ -16,7 +16,9 @@ class BaseModels(models.Model):
     created_at = models.DateTimeField('Created At', auto_now_add=True)
     updated_at = models.DateTimeField('Updated At', auto_now=True)
     deleted_at = models.DateTimeField('Deleted At', auto_now=True, null=True, blank=True)
-    historical = HistoricalRecords(user_model='user.Users', inherit=True)
+    
+    # 🚫 Histórico seguro (sin password ni last_login)
+    historical = HistoricalRecords(user_model='user.Users', inherit=True, excluded_fields=['password', 'last_login'])
     
     @property
     def _history_user(self):

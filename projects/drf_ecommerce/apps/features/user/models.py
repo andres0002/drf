@@ -3,6 +3,7 @@
 from django.db import models # type: ignore
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin # type: ignore
 # third
+from simple_history.models import HistoricalRecords # type: ignore
 # own
 from apps.core.models import BaseModels, DocumentTypes
 
@@ -102,3 +103,111 @@ class Users(AbstractBaseUser, PermissionsMixin, BaseModels):
             if self.password and not self.password.startswith('pbkdf2_sha256$'):
                 self.set_password(self.password)
         super().save(*args, **kwargs)
+
+class Fingerprints(BaseModels):
+    """Model definition for Fingerprints."""
+    
+    FINGER_CHOICES = [
+        ('left_thumb', 'Pulgar izquierdo'),
+        ('left_index', 'Índice izquierdo'),
+        ('left_middle', 'Medio izquierdo'),
+        ('left_ring', 'Anular izquierdo'),
+        ('left_little', 'Meñique izquierdo'),
+        ('right_thumb', 'Pulgar derecho'),
+        ('right_index', 'Índice derecho'),
+        ('right_middle', 'Medio derecho'),
+        ('right_ring', 'Anular derecho'),
+        ('right_little', 'Meñique derecho'),
+    ]
+
+    # TODO: Define fields here
+    user = models.ForeignKey(
+        Users,
+        on_delete=models.CASCADE,
+        related_name='fingerprints'
+    )
+    finger = models.CharField(
+        max_length=20,
+        choices=FINGER_CHOICES,
+        verbose_name="Finger"
+    )
+    template = models.BinaryField(
+        verbose_name="Plantilla biométrica",
+        help_text="Datos binarios del patrón extraído del lector"
+    )
+    device_serial_number = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        """Meta definition for Fingerprints."""
+
+        verbose_name = 'Fingerprint'
+        verbose_name_plural = 'Fingerprints'
+        unique_together = ('user', 'finger')
+
+    def __str__(self):
+        """Unicode representation of Fingerprints."""
+        return f"{self.user.username} - {self.get_finger_display()}"
+
+# class AccessLogs(BaseModels):
+#     """Model definition for AccessLogs."""
+    
+#     ACCESS_TYPE = [
+#         ('entry', 'Entrada'),
+#         ('exit', 'Salida'),
+#     ]
+
+#     # TODO: Define fields here
+#     user = models.ForeignKey(
+#         Users,
+#         on_delete=models.SET_NULL,
+#         null=True,
+#         blank=True,
+#         related_name='access_logs',
+#         verbose_name="Usuario"
+#     )
+#     fingerprint = models.ForeignKey(
+#         Fingerprints,
+#         on_delete=models.SET_NULL,
+#         null=True,
+#         blank=True,
+#         related_name='access_logs',
+#         verbose_name="Huella usada"
+#     )
+#     device_serial_number = models.CharField(
+#         max_length=100,
+#         verbose_name="Dispositivo lector",
+#         help_text="Número de serie o identificador del lector que registró el acceso."
+#     )
+#     verified = models.BooleanField(
+#         default=False,
+#         verbose_name="Huella verificada"
+#     )
+#     access_type = models.CharField(
+#         max_length=10,
+#         choices=ACCESS_TYPE,
+#         default='entry',
+#         verbose_name="Tipo de acceso"
+#     )
+#     timestamp = models.DateTimeField(
+#         auto_now_add=True,
+#         verbose_name="Fecha y hora del acceso"
+#     )
+#     notes = models.TextField(
+#         blank=True,
+#         null=True,
+#         verbose_name="Notas o detalles"
+#     )
+
+#     class Meta:
+#         """Meta definition for AccessLogs."""
+
+#         verbose_name = 'AccessLog'
+#         verbose_name_plural = 'AccessLogs'
+#         ordering = ['-timestamp']
+
+#     def __str__(self):
+#         """Unicode representation of AccessLogs."""
+#         user = self.user.username if self.user else "Desconocido"
+#         type = "Entrada" if self.access_type == "entry" else "Salida"
+#         state = "Éxito" if self.verified else "Error"
+#         return f"({state}) {user} - {type} ({self.timestamp.strftime('%Y-%m-%d %H:%M:%S')})"

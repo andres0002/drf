@@ -19,3 +19,7 @@ from apps.features.user.api.viewsets.viewsets_users import (
     PublicUsersViewSets,
     PrivateUsersModelViewSets
 )
+from apps.features.user.api.viewsets.viewsets_fingerprints import (
+    PublicFingerprintsViewSets,
+    PrivateFingerprintsModelViewSets
+)
