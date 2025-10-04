@@ -1,6 +1,7 @@
 # py
 # django
 from django.db import models # type: ignore
+from django.utils import timezone # type: ignore
 # drf
 # third
 from simple_history.models import HistoricalRecords # type: ignore
@@ -15,7 +16,7 @@ class BaseModels(models.Model):
     is_active = models.BooleanField('Activated/Deactivated', default=True)
     created_at = models.DateTimeField('Created At', auto_now_add=True)
     updated_at = models.DateTimeField('Updated At', auto_now=True)
-    deleted_at = models.DateTimeField('Deleted At', auto_now=True, null=True, blank=True)
+    deleted_at = models.DateTimeField('Deleted At', null=True, blank=True)
     
     # 🚫 Histórico seguro (sin password ni last_login)
     historical = HistoricalRecords(user_model='user.Users', inherit=True, excluded_fields=['password', 'last_login'])
@@ -27,6 +28,17 @@ class BaseModels(models.Model):
     @_history_user.setter
     def _history_user(self, value):
         self.changed_by = value
+    
+    # ⚙️ Lógica automática de soft delete
+    def save(self, *args, **kwargs):
+        if not self.is_active and self.deleted_at is None:
+            # Si el registro se desactiva por primera vez
+            self.deleted_at = timezone.now()
+        elif self.is_active and self.deleted_at is not None:
+            # Si se reactiva, limpiamos la fecha de eliminación
+            self.deleted_at = None
+
+        super().save(*args, **kwargs)
 
     class Meta:
         """Meta definition for BaseModels."""
