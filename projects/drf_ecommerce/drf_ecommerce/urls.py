@@ -49,6 +49,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # urls project drf_ecommerce.
     path('core/', include(('apps.core.api.urls.routers','core'))),
+    path('shared/', include(('apps.shared.api.urls.routers','shared'))),
     path('auth/', include(('apps.features.auth_own.api.urls.urls','auth'))),
     path('user/', include(('apps.features.user.api.urls.routers','user'))),
     path('product/', include(('apps.features.product.api.urls.routers','product'))),
