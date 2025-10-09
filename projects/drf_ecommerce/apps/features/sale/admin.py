@@ -30,9 +30,9 @@ class SalesResource(resources.ModelResource):
 
 class SalesAdmin(ImportExportModelAdmin):
     # search_fields = ('description',)
-    list_display = ('user','customer','payment_type','date','total','created_at','updated_at','deleted_at')
+    list_display = ('user','customer','payment_type','date','total_value','created_at','updated_at','deleted_at')
     list_filter = ('user','customer','payment_type','created_at','updated_at','deleted_at')
-    readonly_fields = ('created_at','updated_at','deleted_at')
+    readonly_fields = ('total_value', 'created_at','updated_at','deleted_at')
     ordering = ('created_at',)
     resource_classes = (SalesResource,)
 
@@ -43,9 +43,9 @@ class SaleDetailsResource(resources.ModelResource):
 
 class SaleDetailsAdmin(ImportExportModelAdmin):
     # search_fields = ('description',)
-    list_display = ('sale','product','quantity','price','subtotal','created_at','updated_at','deleted_at')
+    list_display = ('sale','product','quantity','price','subtotal_value','created_at','updated_at','deleted_at')
     list_filter = ('product','quantity','created_at','updated_at','deleted_at')
-    readonly_fields = ('created_at','updated_at','deleted_at')
+    readonly_fields = ('subtotal_value','created_at','updated_at','deleted_at')
     ordering = ('created_at',)
     resource_classes = (SaleDetailsResource,)
 

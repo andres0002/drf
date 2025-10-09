@@ -1,4 +1,5 @@
 # py
+from decimal import Decimal
 # django
 from django.db import models # type: ignore
 # drf
@@ -13,11 +14,10 @@ from apps.features.product.models import Products
 class Carts(BaseModels):
     """Model definition for Carts."""
     
-    STATUS_CHOICES = (
-        ('OPEN', 'Open'),                # Carrito activo en uso
-        ('CHECKED_OUT', 'Checked Out'),  # Convertido en venta/pedido
-        ('ABANDONED', 'Abandoned'),      # El cliente no lo finalizó
-    )
+    class StatusChoices(models.TextChoices):
+        OPEN = 'OPEN', 'Open' # Carrito activo en uso
+        CHECKED_OUT = 'CHECKED_OUT', 'Checked Out' # Convertido en venta/pedido 
+        ABANDONED = 'ABANDONED', 'Abandoned' # El cliente no lo finalizó
 
     # TODO: Define fields here
     user = models.ForeignKey(
@@ -27,17 +27,16 @@ class Carts(BaseModels):
     )
     status = models.CharField(
         max_length=20,
-        choices=STATUS_CHOICES,
-        default='OPEN'
+        choices=StatusChoices.choices,
+        default=StatusChoices.OPEN
     )
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     class Meta:
         """Meta definition for Carts."""
-
         verbose_name = 'Cart'
         verbose_name_plural = 'Carts'
-        ordering = ['id']
+        ordering = ['-created_at']
 
     def __str__(self):
         """Unicode representation of Carts."""
@@ -57,8 +56,8 @@ class CartItems(BaseModels):
         on_delete=models.CASCADE
     )
     quantity = models.PositiveIntegerField(default=1)
-    price = models.DecimalField(max_digits=10, decimal_places=2)   # Precio unitario en el momento de agregar
-    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2) # Precio unitario en el momento de agregar
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2, editable=False)
 
     class Meta:
         """Meta definition for CartItems."""
@@ -71,3 +70,12 @@ class CartItems(BaseModels):
     def __str__(self):
         """Unicode representation of CartItems."""
         return f"{self.product.name} x{self.quantity} in Cart {self.cart.id}"
+    
+    def save(self, *args, **kwargs):
+        """Recalcula subtotal y actualiza el total del carrito."""
+        self.subtotal = Decimal(self.price) * Decimal(self.quantity)
+        super().save(*args, **kwargs)
+        # actualiza total del carrito
+        total = sum(item.subtotal for item in self.cart.items.all())
+        self.cart.total = total
+        self.cart.save(update_fields=['total', 'updated_at'])

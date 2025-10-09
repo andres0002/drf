@@ -32,7 +32,7 @@ class CartItemsAdmin(ImportExportModelAdmin):
     # search_fields = ('notes',)
     list_display = ('cart', 'product', 'quantity', 'price', 'subtotal', 'is_active', 'created_at','updated_at','deleted_at')
     list_filter = ('cart', 'product', 'is_active', 'created_at','updated_at','deleted_at')
-    readonly_fields = ('created_at','updated_at','deleted_at')
+    readonly_fields = ('subtotal', 'created_at','updated_at','deleted_at')
     ordering = ('created_at',)
     resource_classes = (CartItemsResource,)
 

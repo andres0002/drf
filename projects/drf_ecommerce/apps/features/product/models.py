@@ -1,8 +1,9 @@
 # py
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_UP
 # django
 from django.db import models # type: ignore
 from django.utils import timezone # type: ignore
+from django.core.validators import MinValueValidator # type: ignore
 # drf
 # third
 # own
@@ -16,17 +17,16 @@ class ProductCategories(BaseModels):
     # TODO: Define fields here
     code = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=100)   
-    description = models.CharField('Description', max_length=50, unique=True, blank=False, null=False)
+    description = models.CharField('Description', max_length=150, blank=True, null=True)
 
     class Meta:
         """Meta definition for ProductCategories."""
-
         verbose_name = 'Product Categorie'
         verbose_name_plural = 'Product Categories'
 
     def __str__(self):
         """Unicode representation of ProductCategories."""
-        return self.description
+        return f"{self.code} - {self.name}"
 
 class Products(BaseModels):
     """Model definition for Products."""
@@ -34,10 +34,10 @@ class Products(BaseModels):
     # TODO: Define fields here
     code = models.CharField(max_length=50, unique=True)
     name = models.CharField('Product Name', max_length=150, unique=True)
-    description = models.TextField('Product Description', blank=False, null=False)
+    description = models.TextField('Product Description', blank=True, null=True)
     barcode = models.CharField(max_length=150, blank=True, null=True, unique=True)
-    measure_unit = models.ForeignKey(MeasureUnits, on_delete=models.CASCADE, verbose_name='Measure Unit', null=True)
-    category = models.ForeignKey(ProductCategories, on_delete=models.CASCADE, verbose_name='Product Category', null=True)
+    measure_unit = models.ForeignKey(MeasureUnits, on_delete=models.PROTECT, verbose_name='Measure Unit', null=True)
+    category = models.ForeignKey(ProductCategories, on_delete=models.PROTECT, verbose_name='Product Category', null=True)
     image = models.ImageField('Product Image', upload_to='products/', blank=True, null=True)
     
     # Precio de venta real (editable)
@@ -46,6 +46,7 @@ class Products(BaseModels):
         max_digits=10,
         decimal_places=2,
         default=0,
+        validators=[MinValueValidator(0)],
         help_text="Precio final de venta al cliente."
     )
     
@@ -90,13 +91,12 @@ class Products(BaseModels):
 
     class Meta:
         """Meta definition for Products."""
-
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
 
     def __str__(self):
         """Unicode representation of Products."""
-        return self.name
+        return f"{self.code} - {self.name}"
     
     @property
     def last_price(self):
@@ -181,12 +181,21 @@ class Products(BaseModels):
         """Aplica un descuento según el tipo (PERCENTAGE o AMOUNT)."""
         if promo.discount_type.code == "PERCENTAGE":
             discount_amount = (self.price * promo.discount_value) / Decimal(100)
-            return self.price - discount_amount
+            return (self.price - discount_amount).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
 
         elif promo.discount_type.code == "AMOUNT":
             return max(Decimal("0.0"), self.price - promo.discount_value)
 
         return self.price
+
+    @property
+    def stock_real(self):
+        """Obtiene el stock actual del producto (suma de movimientos)."""
+        from apps.features.inventory.models import InventoryMovements
+        total = InventoryMovements.objects.filter(product=self).aggregate(
+            total=models.Sum('quantity')
+        )['total'] or 0
+        return total
 
 class ProductComponents(BaseModels):
     """Model definition for ProductComponents."""
@@ -200,7 +209,7 @@ class ProductComponents(BaseModels):
     )
     subproduct = models.ForeignKey(
         Products,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name="used_in"
     )
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
@@ -267,7 +276,7 @@ class Promotions(BaseModels):
 
     def __str__(self):
         """Unicode representation of Promotions."""
-        return f"{self.name} ({self.discount_type.code}: {self.discount_value})"
+        return f"{self.name} ({self.discount_type.code}: {self.discount_value}) [{self.start_date:%d-%m-%Y}]"
 
     @property
     def is_valid(self):

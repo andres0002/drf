@@ -3,9 +3,9 @@
 from django.db import models # type: ignore
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin # type: ignore
 # third
-from simple_history.models import HistoricalRecords # type: ignore
 # own
 from apps.core.models import BaseModels, DocumentTypes
+from apps.shared.models import Countries, Cities
 
 # Create your models here.
 
@@ -42,36 +42,51 @@ class Roles(BaseModels):
     """Model definition for Roles."""
 
     # TODO: Define fields here
-    code = models.CharField(max_length=50, unique=True)  # Ej: ADMIN, SELLER, SUPERVISOR
-    name = models.CharField(max_length=100)              # Nombre legible: "Administrador"
-    description = models.TextField(null=True, blank=True)
+    code = models.CharField('Code', max_length=50, unique=True)  # Ej: ADMIN, SELLER, SUPERVISOR
+    name = models.CharField('Name', max_length=100)              # Nombre legible: "Administrador"
+    description = models.TextField('Description', null=True, blank=True)
 
     class Meta:
         """Meta definition for Roles."""
-
         verbose_name = 'Role'
         verbose_name_plural = 'Roles'
         ordering = ['id']
 
     def __str__(self):
         """Unicode representation of Roles."""
-        return self.code
+        return f"{self.code} - {self.name}"
 
 
 class Users(AbstractBaseUser, PermissionsMixin, BaseModels):
     """Model definition for Users."""
 
     # TODO: Define fields here
-    username = models.CharField(unique=True, max_length=255)
-    email = models.EmailField(unique=True, max_length=255)
-    name = models.CharField(max_length=255, blank=True, null=True)
-    lastname = models.CharField(max_length=255, blank=True, null=True)
-    document_type = models.ForeignKey(DocumentTypes, on_delete=models.PROTECT, null=True, blank=True)
+    username = models.CharField('Username', unique=True, max_length=255)
+    email = models.EmailField('Email', unique=True, max_length=255)
+    name = models.CharField('Name', max_length=150, blank=True, null=True)
+    lastname = models.CharField('Lastname', max_length=150, blank=True, null=True)
+    document_type = models.ForeignKey(DocumentTypes, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Document Type')
     document = models.CharField('Document Number', max_length=20, unique=True, null=True, blank=True)
-    image = models.ImageField(upload_to='user/profile/image/', blank=True, null=True)
-    is_staff = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='user/profile/image/', blank=True, null=True, verbose_name='Image')
+    is_staff = models.BooleanField('Is Staff', default=False)
     phone = models.CharField('Phone Number', max_length=15, null=True, blank=True)
-    rol = models.ForeignKey(Roles, on_delete=models.PROTECT, null=True, blank=True)
+    role = models.ForeignKey(Roles, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Role')
+    country = models.ForeignKey(
+        Countries,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="users",
+        verbose_name="Country"
+    )
+    city = models.ForeignKey(
+        Cities,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="users",
+        verbose_name="City"
+    )
     objects = UsersManager()
 
     USERNAME_FIELD = 'username'
@@ -79,7 +94,6 @@ class Users(AbstractBaseUser, PermissionsMixin, BaseModels):
 
     class Meta:
         """Meta definition for Users."""
-        
         verbose_name = 'User'
         verbose_name_plural = 'Users'
         ordering = ['username']
@@ -95,9 +109,8 @@ class Users(AbstractBaseUser, PermissionsMixin, BaseModels):
         if self.pk:
             # Si es una actualización, verificamos si cambió la contraseña
             old = Users.objects.filter(pk=self.pk).first()
-            if old and old.password != self.password:
-                if not self.password.startswith('pbkdf2_sha256$'):
-                    self.set_password(self.password)
+            if old and old.password != self.password and not self.password.startswith('pbkdf2_sha256$'):
+                self.set_password(self.password)
         else:
             # Usuario nuevo, se asegura que la contraseña esté hasheada
             if self.password and not self.password.startswith('pbkdf2_sha256$'):
@@ -124,7 +137,8 @@ class Fingerprints(BaseModels):
     user = models.ForeignKey(
         Users,
         on_delete=models.CASCADE,
-        related_name='fingerprints'
+        related_name='fingerprints',
+        verbose_name='User'
     )
     finger = models.CharField(
         max_length=20,
@@ -135,7 +149,7 @@ class Fingerprints(BaseModels):
         verbose_name="Plantilla biométrica",
         help_text="Datos binarios del patrón extraído del lector"
     )
-    device_serial_number = models.CharField(max_length=100, blank=True, null=True)
+    device_serial_number = models.CharField('Device Serial Number', max_length=100, blank=True, null=True)
 
     class Meta:
         """Meta definition for Fingerprints."""
@@ -163,7 +177,7 @@ class AccessLogs(BaseModels):
         null=True,
         blank=True,
         related_name='access_logs',
-        verbose_name="Usuario"
+        verbose_name="User"
     )
     fingerprint = models.ForeignKey(
         Fingerprints,
