@@ -10,7 +10,7 @@ from apps.shared.models import Countries, Cities
 # Create your models here.
 
 class UsersManager(BaseUserManager):
-    def _create_user(self, username, email, name, lastname, document_type, document, phone, rol, password, is_staff, is_superuser, **extra_fields):
+    def _create_user(self, username, email, name, lastname, document_type, document, phone, role, password, is_staff, is_superuser, **extra_fields):
         user = self.model(
             username = username,
             email = email,
@@ -19,7 +19,7 @@ class UsersManager(BaseUserManager):
             document_type = document_type,
             document = document,
             phone = phone,
-            rol = rol,
+            role = role,
             is_staff = is_staff,
             is_superuser = is_superuser,
             **extra_fields
@@ -29,11 +29,11 @@ class UsersManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, username, email, name, lastname, document_type, document, phone, rol, password=None, is_staff=False, is_superuser=False, **extra_fields):
-        return self._create_user(username, email, name, lastname, document_type, document, phone, rol, password, is_staff, is_superuser, **extra_fields)
+    def create_user(self, username, email, name, lastname, document_type, document, phone, role, password=None, is_staff=False, is_superuser=False, **extra_fields):
+        return self._create_user(username, email, name, lastname, document_type, document, phone, role, password, is_staff, is_superuser, **extra_fields)
 
-    def create_superuser(self, username, email, name, lastname, document_type=None, document=None, phone=None, rol=None, password=None, is_staff=True, is_superuser=True, **extra_fields):
-        return self._create_user(username, email, name, lastname, document_type, document, phone, rol, password, is_staff, is_superuser, **extra_fields)
+    def create_superuser(self, username, email, name, lastname, document_type=None, document=None, phone=None, role=None, password=None, is_staff=True, is_superuser=True, **extra_fields):
+        return self._create_user(username, email, name, lastname, document_type, document, phone, role, password, is_staff, is_superuser, **extra_fields)
 
     def get_by_natural_key(self, username):
         return self.get(username=username)

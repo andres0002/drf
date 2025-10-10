@@ -9,7 +9,11 @@ from apps.features.inventory.api.viewsets.viewsets import (
     PublicInventoryMovementsViewSets,
     PrivateInventoryMovementsModelViewSets,
     PublicStocksViewSets,
-    PrivateStocksModelViewSets
+    PrivateStocksModelViewSets,
+    PublicWarehousesViewSets,
+    PrivateWarehousesModelViewSets,
+    PublicWarehouseTransfersViewSets,
+    PrivateWarehouseTransfersModelViewSets
 )
 
 router = DefaultRouter()
@@ -20,6 +24,12 @@ router.register(r'private_inventory_movements', PrivateInventoryMovementsModelVi
 # stocks.
 router.register(r'public_stocks', PublicStocksViewSets, basename='public_stocks')
 router.register(r'private_stocks', PrivateStocksModelViewSets, basename='private_stocks')
+# warehouses.
+router.register(r'public_warehouses', PublicWarehousesViewSets, basename='public_warehouses')
+router.register(r'private_warehouses', PrivateWarehousesModelViewSets, basename='private_warehouses')
+# warehouse transfer.
+router.register(r'public_warehouse_transfers', PublicWarehouseTransfersViewSets, basename='public_warehouse_transfers')
+router.register(r'private_warehouse_transfers', PrivateWarehouseTransfersModelViewSets, basename='private_warehouse_transfers')
 
 # instance urlpatterns.
 urlpatterns = []
