@@ -56,8 +56,8 @@ class ProductsResource(resources.ModelResource):
 
 class ProductsAdmin(ImportExportModelAdmin):
     search_fields = ('name','description')
-    list_display = ('name','description','measure_unit','category','created_at','updated_at','deleted_at')
-    list_filter = ('measure_unit','category','created_at','updated_at','deleted_at')
+    list_display = ('name','description','measure_unit','category','is_digital','created_at','updated_at','deleted_at')
+    list_filter = ('measure_unit','category','is_digital','created_at','updated_at','deleted_at')
     readonly_fields = ('suggested_price_display','created_at','updated_at','deleted_at')
     ordering = ('created_at',)
     resource_classes = (ProductsResource,)

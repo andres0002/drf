@@ -39,6 +39,7 @@ class Products(BaseModels):
     measure_unit = models.ForeignKey(MeasureUnits, on_delete=models.PROTECT, verbose_name='Measure Unit', null=True)
     category = models.ForeignKey(ProductCategories, on_delete=models.PROTECT, verbose_name='Product Category', null=True)
     image = models.ImageField('Product Image', upload_to='products/', blank=True, null=True)
+    is_digital = models.BooleanField('Is Digital', default=False)
     
     # Precio de venta real (editable)
     price = models.DecimalField(
